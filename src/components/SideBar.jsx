@@ -1,6 +1,50 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './SideBar.module.css';
+import ClubCard from './sidebar_components/ClubCard';
 
-const SideBar = ({userData}) => {
+const SideBar = ({ userData }) => {
+  const [member, setMember] = useState([]);
+  const [follower, setFollower] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    const fetchUserRolesClubsData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/get_clubs_roles', {
+          headers: { Authorization: `${token}` },
+        });
+
+        console.log('Full Response:', response);
+        console.log('User Roles Clubs Data:', response.data.userRolesClubs);
+
+        // The data is separated into two arrays, one for member and one for follower
+        const memberData = response.data.userRolesClubs.filter(
+          (item) =>
+            (item.role_name === 'Owner' ||
+              item.role_name === 'Member' ||
+              item.role_name === 'Moderator') &&
+            item.is_approved === 1
+        );
+
+        const followerData = response.data.userRolesClubs.filter(
+          (item) => item.role_name === 'Follower'
+        );
+
+        setMember(memberData);
+        setFollower(followerData);
+
+        console.log('Member Data:', memberData);
+        console.log('Follower Data:', followerData);
+
+      } catch (error) {
+        console.error('Failed to fetch user roles clubs data', error);
+      }
+    };
+
+    fetchUserRolesClubsData();
+  }, []); // No dependencies, so it only runs once on mount
 
 
   return (
@@ -19,27 +63,23 @@ const SideBar = ({userData}) => {
         <div className={styles.clubsection}>
 
             <div className={styles.title}>
-              <p>MEMBER 2</p>
+              <p>MEMBER {member.length}</p>
             </div>
 
             <div className={styles.scrollable}>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
+              {member.map((item, index) => (
+                <ClubCard key={index} clubname={item.name}/>
+              ))}
             </div>
 
             <div className={styles.title}>
-              <p>FOLLOWING 8</p>
+              <p>FOLLOWING {follower.length}</p>
             </div>
 
             <div className={styles.scrollable}>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
-              <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>CLUB</div>
+              {follower.map((item, index) => (
+                <ClubCard key={index} clubname={item.name}/>
+              ))}
             </div>
 
         </div>
