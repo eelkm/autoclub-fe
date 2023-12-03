@@ -1,0 +1,64 @@
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20%;
+  background-color: rgb(23, 2, 2);
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.seperator{
+  display: flex;
+  flex-direction: column;
+}
+
+.sidelogo{
+  color: white;
+  background-color: #170202;
+  height: 50px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.title{
+  color: rgb(184, 184, 184);
+  font-weight: 900;
+  font-size: 15px;
+  background-color: #170202;
+  height: 40px;
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.profilesection{
+  color: rgb(184, 184, 184);
+  font-weight: 900;
+  font-size: 20px;
+  background-color: #170202;
+  height: 100px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.profilesection:hover{
+  background-color: #000000;
+}
+
+.clubsection{
+  /* flex: 1; */
+  height: calc(100% - 150px);
+  background-color: #170202;
+  color: white;
+}
+
+.scrollable{
+  overflow-y: auto;
+  max-height: calc(50% - 40px);
+  padding-left: 10px;
+  padding-right: 10px;
+}

@@ -26,15 +26,15 @@ function App() {
       {token ? (
         <div>
           <Homepage token={token} />
-          <button onClick={handleLogout}>Logout</button>
+          <button onClick={handleLogout} className='logoutbtn'>Logout</button>
         </div>
       ) : (
         <div>
           <RegisterComponent />
-          <LoginComponent setToken={setToken} />
+          <LoginComponent setToken={setToken}/>
         </div>
       )}
-      {token && <div>Your JWT token: {token}</div>}
+      {/* {token && <div>Your JWT token: {token}</div>} */}
     </div>
   );
 }

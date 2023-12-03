@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+}
+
+.middlecolumn {
+  flex: 3;
+  box-sizing: border-box;
+  height: 200vh;
+}
+
+.columnsidebar {
+  flex: 1;
+  box-sizing: border-box
+}
