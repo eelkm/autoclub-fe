@@ -1,9 +1,10 @@
+import styles from './ClubCard.module.css';
 
-const ClubCard = ({clubname}) => {
-  console.log(clubname);
+const ClubCard = ({clubname, image}) => {
   return (
     <div>
-      <div style={{background: 'rgb(61, 5, 5)', height: '50px', borderRadius: '10px', padding: '5px', marginBottom: '4px'}}>
+      <div className={styles.card}>
+        <img className={styles.img} src={image} alt="" />
         <p>{clubname}</p>
       </div>
     </div>

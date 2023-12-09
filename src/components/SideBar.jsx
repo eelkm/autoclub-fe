@@ -52,7 +52,8 @@ const SideBar = ({ userData }) => {
       <div className={styles.seperator} style={{height: 'calc(100vh - 60px)'}}>
 
         <div className={styles.sidelogo}>
-          <p>AutoClub</p>
+          <img style={{width: '65px', height: '65px', marginRight: '10px'}} src="/Logo.png" alt="" />
+          <p className={styles.logofont}>AutoClub</p>
         </div>
 
         <div className={styles.profilesection}>
@@ -68,7 +69,7 @@ const SideBar = ({ userData }) => {
 
             <div className={styles.scrollable}>
               {member.map((item, index) => (
-                <ClubCard key={index} clubname={item.name}/>
+                <ClubCard key={index} clubname={item.name} image={item.small_img_url}/>
               ))}
             </div>
 
@@ -78,7 +79,7 @@ const SideBar = ({ userData }) => {
 
             <div className={styles.scrollable}>
               {follower.map((item, index) => (
-                <ClubCard key={index} clubname={item.name}/>
+                <ClubCard key={index} clubname={item.name} image={item.small_img_url}/>
               ))}
             </div>
 

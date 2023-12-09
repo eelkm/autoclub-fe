@@ -1,10 +1,21 @@
+@font-face {
+  font-family: 'NatureBeauty';
+  src: url('/NatureBeauty.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logofont{
+  font-family: 'NatureBeauty';
+}
+
 .sidebar{
   position: fixed;
   left: 0;
   top: 0;
   width: 20%;
-  background-color: rgb(23, 2, 2);
-  border: 1px solid #000000;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0px solid #000000;
   box-sizing: border-box;
   height: 100vh;
 }
@@ -16,17 +27,20 @@
 
 .sidelogo{
   color: white;
-  background-color: #170202;
-  height: 50px;
+  background-color: rgb(16, 16, 16);
+  height: 100px;
   text-align: center;
-  padding-top: 15px;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title{
   color: rgb(184, 184, 184);
   font-weight: 900;
   font-size: 15px;
-  background-color: #170202;
+  background-color: rgba(118, 118, 118, 0);
   height: 40px;
   text-align: left;
   padding-top: 10px;
@@ -37,7 +51,8 @@
   color: rgb(184, 184, 184);
   font-weight: 900;
   font-size: 20px;
-  background-color: #170202;
+  background: rgb(16, 16, 16);
+  border-radius: 0px 0px 10px 10px;
   height: 100px;
   display: flex;
   justify-content: left;
@@ -46,13 +61,13 @@
 }
 
 .profilesection:hover{
-  background-color: #000000;
+  background: rgb(37, 37, 37);
+  color: white;
 }
 
 .clubsection{
   /* flex: 1; */
   height: calc(100% - 150px);
-  background-color: #170202;
   color: white;
 }
 
