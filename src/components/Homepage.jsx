@@ -1,11 +1,13 @@
 // Homepage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SideBar from './SideBar';
 import styles from './Homepage.module.css';
-import SidebarRight from './SidebarRight';
+import LeftSide from './homepage_components/LeftSide';
+import RightSide from './homepage_components/RightSide';
 
 function Homepage({ token }) {
+
+
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -28,21 +30,35 @@ function Homepage({ token }) {
   return (
     <div>
 
-      <div className={styles.container}>
-        <div className={styles.columnsidebar}>
-          {userData && (
-          <div>
-            <SideBar userData={userData} />
-          </div>)}
+      {userData && (
+
+        <div className="container">
+          <LeftSide />
+
+          <div className="main">
+            <div className="search-bar">
+              <input type="text" placeholder="Search" />
+              <button className="right-side-button">
+                <svg
+                  viewBox="0 0 24 24"
+                  width={24}
+                  height={24}
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="css-i6dzq1"
+                >
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <RightSide userData={userData}/>
         </div>
-        <div className={styles.middlecolumn}>
-            <h2>Column 2</h2>
-            <p>asdasd</p>
-        </div>
-        <div className={styles.columnsidebar}>
-          <SidebarRight />
-        </div>
-      </div>
+      )}
 
 
     </div>

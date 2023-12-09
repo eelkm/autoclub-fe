@@ -1,21 +1,155 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700|Source+Sans+Pro:300,400,600,700&display=swap");
 
 :root {
-  --body-font: "Inter", sans-serif;
+  --bg-color: #151728;
+  --bg-hover: rgb(18, 19, 34);
+  --border-color: #272a3a;
+  --title-font: "DM Sans", sans-serif;
+  --body-font: "Source Sans Pro", sans-serif;
+  --side-title: #5c5e6e;
+  --button: #8f98a9;
 }
 
 * {
   outline: none;
   box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  margin: 0;
-  font-family: var(--body-font);
 }
 
-body{
-  background-color: #444444;
-  color: #fff;
+body {
+  font-family: var(--body-font);
+  background-color: #373e57;
+  color: #ccc8db;
+  margin: 0;
 }
+
+.container {
+  background-color: bg-color;
+  display: flex;
+  max-width: 1600px;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #181d2f;
+}
+
+
+
+
+
+
+
+
+
+.search-bar {
+  height: 60px;
+  background-color: var(--bg-color);
+  z-index: 3;
+  position: relative;
+  input {
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-color: transparent;
+    border: none;
+    padding: 0 54px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3e%3cpath d='M508.9 478.7L360 330a201.6 201.6 0 0045.2-127.3C405.3 90.9 314.4 0 202.7 0S0 91 0 202.7s91 202.6 202.7 202.6c48.2 0 92.4-17 127.3-45.2L478.7 509c4.2 4.1 11 4.1 15 0l15.2-15.1c4.1-4.2 4.1-11 0-15zm-306.2-116c-88.3 0-160-71.8-160-160s71.7-160 160-160 160 71.7 160 160-71.8 160-160 160z' data-original='%23000000' class='active-path' data-old_color='%23000000' fill='%235C5D71'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 25px 50%;
+    color: #fff;
+    font-family: var(--body-font);
+    font-weight: 600;
+    &::placeholder {
+    color: #5c5d71;
+    }
+  }
+}
+
+.main-container {
+  padding: 20px;
+  flex-grow: 1;
+  overflow: auto;
+  background-color: #24273b;
+}
+
+.profile {
+  position: relative;
+  height: 40vh;
+  min-height: 250px;
+  max-height: 350px;
+  z-index: 1;
+
+  &-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 4px;
+  }
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    background-image: url("https://images.unsplash.com/photo-1508247967583-7d982ea01526?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(50px);
+    opacity: 0.7;
+  }
+}
+
+.profile-menu {
+  position: absolute;
+  bottom: 0;
+  padding-left: 200px;
+  background: bg-color;
+  width: 100%;
+  display: flex;
+  border-radius: 0 0 4px 4px;
+}
+
+.profile-menu-link {
+  padding: 20px 16px;
+  color: side-title;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &.active,
+  &:hover {
+    color: #fff;
+    background-color: #1b1d2e;
+    border-bottom: 3px solid #1488fa;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -50,6 +184,17 @@ body{
   background-color: #3d0505;
   color: #fff;
 }
+
+
+
+
+
+
+ 
+
+
+
+
 
 
 /* ===== Scrollbar CSS ===== */

@@ -1,0 +1,156 @@
+.right_side {
+  width: 280px;
+  flex-shrink: 0;
+  margin-left: auto;
+  overflow: auto;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.account {
+  height: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-color);
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+.account_button {
+  border: 0;
+  background: 0;
+  color: #64677a;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.account_button svg {
+  width: 20px;
+}
+
+.account_user {
+  display: inline-flex;
+  align-items: center;
+  color: #64677a;
+  font-weight: 600;
+  span {
+    font-size: 10px;
+    font-weight: normal;
+  }
+}
+
+.account_profile {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.side_wrapper {
+  padding: 30px;
+}
+
+.side_title {
+  font-family: var(--title-font);
+  color: var(--side-title);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.stories {
+  border-bottom: 1px solid var(--border-color);
+}
+.stories .user-img {
+  border: 2px solid #e2b96c;
+}
+
+.stories .album-date {
+  font-family: var(--body-font);
+}
+
+.side_wrapper {
+  padding: 30px;
+}
+
+.contacts_username {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-family: var(--body-font);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.user:hover {
+  background-color: var(--bg-hover);
+  border-radius: 25px;
+}
+
+.username {
+  font-size: 15px;
+  font-family: var(--title-font);
+}
+
+.user_img {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin-right: 15px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.search_bar {
+  height: 60px;
+  background-color: var(--bg-color);
+  z-index: 3;
+  position: relative;
+  input {
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-color: transparent;
+    border: none;
+    padding: 0 54px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3e%3cpath d='M508.9 478.7L360 330a201.6 201.6 0 0045.2-127.3C405.3 90.9 314.4 0 202.7 0S0 91 0 202.7s91 202.6 202.7 202.6c48.2 0 92.4-17 127.3-45.2L478.7 509c4.2 4.1 11 4.1 15 0l15.2-15.1c4.1-4.2 4.1-11 0-15zm-306.2-116c-88.3 0-160-71.8-160-160s71.7-160 160-160 160 71.7 160 160-71.8 160-160 160z' data-original='%23000000' class='active-path' data-old_color='%23000000' fill='%235C5D71'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 25px 50%;
+    color: #fff;
+    font-family: var(--body-font);
+    font-weight: 600;
+    &::placeholder {
+    color: #5c5d71;
+    }
+  }
+}
+
+.right_search svg {
+  width: 16px;
+  height: 16px;
+}
+
+.right_search {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+}
+
+.right_search input {
+  padding-right: 10px;
+}
