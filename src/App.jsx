@@ -3,10 +3,11 @@ import axios from 'axios';
 import RegisterComponent from './components/RegisterComponent';
 import LoginComponent from './components/LoginComponent';
 import Homepage from './components/Homepage';
+import { useGlobalContext } from './contexts/GlobalContext';
 
 
 function App() {
-  const [token, setToken] = useState('');
+  const {token, setToken } = useGlobalContext();
 
   // Check for token in localStorage on component mount
   useEffect(() => {
@@ -16,18 +17,12 @@ function App() {
     }
   }, []);
 
-  const handleLogout = () => {
-    // Remove the token from both state and localStorage
-    setToken('');
-    localStorage.removeItem('token');
-  };
 
   return (
     <div>
       {token ? (
         <div>
           <Homepage token={token} />
-          <button onClick={handleLogout} className='logoutbtn'>Logout</button>
         </div>
       ) : (
         <div>
@@ -35,7 +30,6 @@ function App() {
           <LoginComponent setToken={setToken}/>
         </div>
       )}
-      {/* {token && <div>Your JWT token: {token}</div>} */}
     </div>
   );
 }

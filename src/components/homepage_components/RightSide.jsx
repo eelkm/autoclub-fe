@@ -2,9 +2,30 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styles from './RightSide.module.css';
 import ClubCard from '../ui_components/club_card/ClubCard';
+import { useGlobalContext } from '../../contexts/GlobalContext';
 
 
 const RightSide = ({userData}) => {
+
+  // For Logout button animation
+  const [isLogoutHovered, setIsLogoutHovered] = useState(false);
+  const {setToken } = useGlobalContext();
+
+  const handleMouseClick = () => {
+    setIsLogoutHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsLogoutHovered(false);
+  };
+
+  const handleLogout = () => {
+    // Remove the token from both state and localStorage
+    setToken('');
+    localStorage.removeItem('token');
+  };
+
+
 
   const [member, setMember] = useState([]);
   const [follower, setFollower] = useState([]);
@@ -49,6 +70,15 @@ const RightSide = ({userData}) => {
   }, []); // No dependencies, so it only runs once on mount
 
 
+
+  // Search bar for following clubs
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredFollowers = follower.filter((item) =>
+  item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
   return (
   <div className={styles.right_side}>
     <div className={styles.account}>
@@ -63,58 +93,34 @@ const RightSide = ({userData}) => {
           <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
         </svg>
       </button>
-      <span className={styles.account_user}>
-          {userData.username}
+      <span className={styles.account_user} onClick={handleMouseClick} onMouseLeave={handleMouseLeave}>
+          {isLogoutHovered? (<div onClick={handleLogout} className={styles.logout}>Logout</div>) : (userData.username)}
+          
         <img
           src={userData.p_image_link}
           alt=""
           className={styles.account_profile}
         />
-        <span>▼</span>
+        <span>▶</span>
       </span>
     </div>
+
     <div className={`${styles.side_wrapper} ${styles.stories}`}>
       <div className={styles.side_title}>MEMBER {member.length}</div>
-      {/* <div className={styles.user}>
-        <img
-          src="https://passion-stickers.com/617-home_default/honda-prelude.jpg"
-          alt=""
-          className={styles.user_img}
-        />
-        <div className={styles.username}>
-          Honda Prelude Club
-          <div className="album-date">12 hours ago</div>
-        </div>
-      </div> */}
-
       {member.map((item, index) => (
         <ClubCard key={index} clubname={item.name} image={item.small_img_url}/>
       ))}
-      
     </div>
 
     <div className={`${styles.side_wrapper} ${styles}`}>
       <div className={styles.side_title}>FOLLOWING {follower.length}</div>
-      
-      {/* <div className={styles.user}>
-        <img
-          src="https://di-uploads-pod16.dealerinspire.com/competitionbmwofsmithtown/uploads/2020/03/new-bmw-logo.jpg"
-          className={styles.user_img}
-        />
-        <div className={styles.contacts_username}>
-          BMW CLUB
-        </div>
-      </div> */}
-
-      {follower.map((item, index) => (
+      {filteredFollowers.map((item, index) => (
         <ClubCard key={index} clubname={item.name} image={item.small_img_url}/>
       ))}
-      
     </div>
 
-
     <div className={`${styles.search_bar} ${styles.right_search}`}>
-      <input type="text" placeholder="Search" />
+      <input type="text" placeholder="Search" value={searchQuery} onChange={(e)=> setSearchQuery(e.target.value)}/>
     </div>
   </div>
 

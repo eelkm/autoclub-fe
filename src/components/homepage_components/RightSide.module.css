@@ -38,10 +38,23 @@
   align-items: center;
   color: #64677a;
   font-weight: 600;
+  padding: 5px;
+  padding-left: 10px;
   span {
     font-size: 10px;
     font-weight: normal;
   }
+}
+
+.account_user:hover {
+  color: #e0e0e0;
+  background: var(--bg-hover);
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.logout{
+  color: red;
 }
 
 .account_profile {
