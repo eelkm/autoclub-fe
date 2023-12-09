@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginComponent = ({ setToken }) => {
+  const navigate = useNavigate(); // Used to redirect the user
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,6 +19,9 @@ const LoginComponent = ({ setToken }) => {
       localStorage.setItem('token', authToken);
 
       console.log('Login successful');
+
+      // Redirect to a new URL with the username as a parameter
+      navigate(`/profile/${username}`);
     } catch (error) {
       console.error('Login failed');
     }

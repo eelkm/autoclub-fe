@@ -1,4 +1,4 @@
-import styles from '../homepage_components/RightSide.module.css';
+import styles from '../../homepage_components/RightSide.module.css';
 
 const ClubCard = ({clubname, image}) => {
   return (

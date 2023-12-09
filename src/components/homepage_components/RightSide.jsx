@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styles from './RightSide.module.css';
-import ClubCard from '../ui_components/ClubCard';
+import ClubCard from '../ui_components/club_card/ClubCard';
+
 
 const RightSide = ({userData}) => {
 

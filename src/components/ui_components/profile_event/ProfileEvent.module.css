@@ -1,0 +1,64 @@
+.box {
+  background-color: var(--bg-color);
+  border-radius: 4px;
+}
+
+.event {
+  position: relative;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.event_wrapper {
+  position: relative;
+}
+
+.event_img {
+  max-width: 100%;
+  display: block;
+  padding-bottom: 12px;
+}
+
+.event_date {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+
+.event_month {
+  background-color: #1687fa;
+  padding: 7px 20px;
+  font-weight: 600;
+  font-family: var(--title-font);
+  color: #fff;
+  text-align: center;
+  border-radius: 4px 4px 0 0;
+}
+
+.event_day {
+  width: 100%;
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: var(--title-font);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 6px 0;
+  text-align: center;
+}
+
+.event_title {
+  color: #c3c5d5;
+  margin-bottom: 5px;
+  font-family: var(--title-font);
+  font-weight: 600;
+  padding: 0 14px;
+}
+
+.event_subtitle {
+  color: var(--side-title);
+  font-family: var(--title-font);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0 14px;
+}

@@ -1,0 +1,52 @@
+.box {
+  background-color: var(--bg-color);
+  border-radius: 4px;
+}
+
+.pages {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.intro_menu {
+  background-color: var(--button);
+  box-shadow: -8px 0 0 0 var(--button), 8px 0 0 0 var(--button);
+  width: 5px;
+  height: 5px;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.intro_title {
+  font-family: var(--title-font);
+  color: var(--side-title);
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.user_img {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin-right: 15px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.username {
+  font-size: 15px;
+  font-family: var(--title-font);
+}
