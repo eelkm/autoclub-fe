@@ -6,8 +6,12 @@ import ProfileNavBanner from '../ui_components/profile_nav_banner/ProfileNavBann
 import ProfilePost from '../ui_components/profile_post/ProfilePost';
 import TopSearchBar from '../ui_components/top_search_bar/TopSearchBar';
 import styles from './MainSection.module.css';
+import { useGlobalContext } from '../../contexts/GlobalContext';
+import { useEffect } from 'react';
 
 const MainSection = ({userData}) => {
+  const { currentUser } = useGlobalContext();
+
 
   return (
 <div className={styles.main}>
@@ -18,8 +22,8 @@ const MainSection = ({userData}) => {
     <div className={styles.timeline}>
       <div className={styles.timeline_left}>
         <ProfileAbout userData={userData}/>
-        <ProfileEvent />
-        <ProfileClubs />
+        {currentUser === userData.username && <ProfileEvent />}
+        {currentUser !== userData.username && <ProfileClubs />}
       </div>
 
       <div className={styles.timeline_right}>

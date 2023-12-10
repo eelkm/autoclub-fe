@@ -1,10 +1,16 @@
 import styles from "./ProfileClubs.module.css";
+import { useGlobalContext } from "../../../contexts/GlobalContext";
 
 const ProfileClubs = () => {
+
+  const { currentUser } = useGlobalContext();
+
+
+
   return (
     <div className={`${styles.pages} ${styles.box}`}>
     <div className={styles.intro_title}>
-      Your clubs
+      Member of:
       <button className={styles.intro_menu} />
     </div>
     <div className={styles.user}>

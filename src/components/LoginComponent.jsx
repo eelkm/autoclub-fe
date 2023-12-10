@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../contexts/GlobalContext';
 
 const LoginComponent = ({ setToken }) => {
   const navigate = useNavigate(); // Used to redirect the user
+  const { setCurrentUser } = useGlobalContext(); // Used to set the username in state
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +23,7 @@ const LoginComponent = ({ setToken }) => {
       console.log('Login successful');
 
       // Redirect to a new URL with the username as a parameter
+      setCurrentUser(username);
       navigate(`/profile/${username}`);
     } catch (error) {
       console.error('Login failed');

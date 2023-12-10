@@ -3,13 +3,16 @@ import { useEffect, useState } from 'react';
 import styles from './RightSide.module.css';
 import ClubCard from '../ui_components/club_card/ClubCard';
 import { useGlobalContext } from '../../contexts/GlobalContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const RightSide = ({userData}) => {
+  const Navigate = useNavigate();
+
 
   // For Logout button animation
   const [isLogoutHovered, setIsLogoutHovered] = useState(false);
-  const {setToken } = useGlobalContext();
+  const {setToken, currentUser, currentUserImg } = useGlobalContext();
 
   const handleMouseClick = () => {
     setIsLogoutHovered(true);
@@ -23,10 +26,11 @@ const RightSide = ({userData}) => {
     // Remove the token from both state and localStorage
     setToken('');
     localStorage.removeItem('token');
+    Navigate(`/`);
   };
 
 
-
+  // Get the user's clubs and roles
   const [member, setMember] = useState([]);
   const [follower, setFollower] = useState([]);
 
@@ -94,10 +98,10 @@ const RightSide = ({userData}) => {
         </svg>
       </button>
       <span className={styles.account_user} onClick={handleMouseClick} onMouseLeave={handleMouseLeave}>
-          {isLogoutHovered? (<div onClick={handleLogout} className={styles.logout}>Logout</div>) : (userData.username)}
+          {isLogoutHovered? (<div onClick={handleLogout} className={styles.logout}>Logout</div>) : (currentUser)}
           
         <img
-          src={userData.p_image_link}
+          src={currentUserImg}
           alt=""
           className={styles.account_profile}
         />
