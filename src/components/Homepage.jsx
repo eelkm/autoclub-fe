@@ -6,11 +6,15 @@ import LeftSide from './homepage_components/LeftSide';
 import RightSide from './homepage_components/RightSide';
 import MainSection from './homepage_components/MainSection';
 import { useGlobalContext } from '../contexts/GlobalContext';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 
 function Homepage({ token }) {
-
+  const navigate = useNavigate();
+  const location = useLocation();
   const {setCurrentUser, setCurrentUserImg} = useGlobalContext();
   const [userData, setUserData] = useState(null);
+
 
   useEffect(() => {
 
@@ -26,7 +30,6 @@ function Homepage({ token }) {
         const data = response.data;
 
         if (response.status === 200) {
-          console.log(data)
           setCurrentUser(data.username);
           setCurrentUserImg(data.p_image_link);
         } else {
@@ -40,10 +43,7 @@ function Homepage({ token }) {
     // Gets the user data of the user whose profile is being viewed
     const fetchUserData = async () => {
       try {
-        console.log('token', token);
-
-        const currentUrl = window.location.href;
-        const usernameToSearch = currentUrl.split("/profile/")[1];// Output: edgars.apinis
+        const usernameToSearch = location.pathname.split("/profile/")[1];
 
         const response = await axios.get(`http://localhost:5000/get_user?username=${usernameToSearch}`, {
           headers: { Authorization: `${token}` },
@@ -56,7 +56,7 @@ function Homepage({ token }) {
 
     fetchUsername();
     fetchUserData();
-  }, [token]);
+  }, [token, location.pathname]); // Fetch user data when token or location.pathname changes
 
   return (
     <div>

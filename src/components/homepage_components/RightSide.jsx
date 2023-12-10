@@ -43,9 +43,6 @@ const RightSide = ({userData}) => {
           headers: { Authorization: `${token}` },
         });
 
-        console.log('Full Response:', response);
-        console.log('User Roles Clubs Data:', response.data.userRolesClubs);
-
         // The data is separated into two arrays, one for member and one for follower
         const memberData = response.data.userRolesClubs.filter(
           (item) =>
@@ -61,10 +58,6 @@ const RightSide = ({userData}) => {
 
         setMember(memberData);
         setFollower(followerData);
-
-        console.log('Member Data:', memberData);
-        console.log('Follower Data:', followerData);
-
       } catch (error) {
         console.error('Failed to fetch user roles clubs data', error);
       }

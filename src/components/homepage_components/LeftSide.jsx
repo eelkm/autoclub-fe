@@ -1,7 +1,11 @@
 
+import { Link } from 'react-router-dom';
 import styles from './LeftSide.module.css';
+import { useGlobalContext } from '../../contexts/GlobalContext';
 
 const LeftSide = () => {
+  const { currentUser } = useGlobalContext();
+
   return (
   <div className={styles.left_side}>
     <div className={styles.left_side_button}></div>
@@ -9,13 +13,13 @@ const LeftSide = () => {
     <div className={styles.side_wrapper}>
       <div className={styles.side_title}>MENU</div>
       <div className={styles.side_menu}>
-        <a href="#">
+        <Link to={`/profile/${currentUser}`}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
             <path d="M9 22V12h6v10" />
           </svg>
           Home
-        </a>
+        </Link>
         <a href="#">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
