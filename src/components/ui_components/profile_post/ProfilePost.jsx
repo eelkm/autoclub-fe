@@ -1,6 +1,26 @@
 import styles from "./ProfilePost.module.css";
+import YouTube from 'react-youtube';
+
+
+const isYouTubeLink = (url) => {
+  console.log(url);
+  // Regular expression to match YouTube video URLs
+  const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/(embed\/|v\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  return youtubeRegex.test(url);
+};
+
+const extractVideoId = (link) => {
+  // Regular expression to get video ID from YouTube URL
+  const match = link.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  console.log(match);
+  return match && match[1];
+};
+
 
 const ProfilePost = ({username, p_image, post}) => {
+  
+  const dateObject = new Date(post.date_created);
+  const date = dateObject.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
   
 
 
@@ -14,17 +34,18 @@ const ProfilePost = ({username, p_image, post}) => {
       />
       <div className={styles.post_detail}>
         <strong>{username}</strong> added new post
-        <div className={styles.post_date}>{post.date_created}</div>
+        <div className={styles.post_date}>{date}</div>
       </div>
       <button className={styles.intro_menu} />
     </div>
     <div className={styles.post_content}>
       {post.text}
-    <img
-      src={post.post_media_url}
-      alt=""
-      className={styles.post_photo}
-    />
+      {isYouTubeLink(post.post_media_url) ? (
+          <YouTube videoId={extractVideoId(post.post_media_url)} className={styles.post_photo} />
+        ) : (
+          <img src={post.post_media_url} alt="" className={styles.post_photo} />
+        )}
+      
     </div>
     <div className={styles.post_actions}>
       <a href="#" className={styles.post_action}>

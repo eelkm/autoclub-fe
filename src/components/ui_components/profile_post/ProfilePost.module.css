@@ -1,6 +1,7 @@
 .box {
   background-color: var(--bg-color);
   border-radius: 4px;
+  margin-bottom: 20px;
 }
 
 .status_main {

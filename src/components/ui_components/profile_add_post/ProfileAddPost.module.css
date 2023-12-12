@@ -4,6 +4,7 @@
   margin-bottom: 20px;
 }
 
+
 .status_menu {
   padding: 20px;
   display: flex;
@@ -74,11 +75,20 @@
     flex-shrink: 0;
     margin-right: 8px;
   }
-  @media screen and (max-width: 1320px) {
-    width: 16px;
+  @media screen and (max-width: 1260px) {
+    width: 26px;
     overflow: hidden;
     color: transparent;
     white-space: nowrap;
+  }
+}
+
+.status_action:hover {
+  color: #fff;
+  cursor: pointer;
+  @media screen and (max-width: 1260px) {
+    color: transparent;
+    cursor: pointer;
   }
 }
 
@@ -91,4 +101,22 @@
   margin-left: auto;
   box-shadow: 0 0 20px #1b86f9;
   cursor: pointer;
+}
+
+.video_window{
+  padding: 10px;
+}
+
+.video_input{
+  width: 100%;
+  border: solid 1px #27272f;
+  padding: 5px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-family: var(--title-font);
+  font-weight: 500;
+  &::placeholder {
+    color: #6b6c82;
+  }
 }

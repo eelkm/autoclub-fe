@@ -57,8 +57,6 @@ const MainSection = ({userData}) => {
       <div className={styles.timeline_right}>
         {currentUser === userData.username && <ProfileAddPost userData={userData}/>}
 
-        {/* <ProfilePost userData={userData} posts={posts}/> */}
-
         {posts.map((item, index) => (
         <ProfilePost key={index} username={userData.username} p_image={userData.p_image_link} post={item}/>
         ))}

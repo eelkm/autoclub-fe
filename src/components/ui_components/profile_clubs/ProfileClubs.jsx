@@ -35,8 +35,7 @@ const ProfileClubs = ({userData}) => {
   return (
     <div className={`${styles.pages} ${styles.box}`}>
     <div className={styles.intro_title}>
-      Member of:
-      <button className={styles.intro_menu} />
+      Member of
     </div>
 
     {memberOfClubs.map((item, index) => (
