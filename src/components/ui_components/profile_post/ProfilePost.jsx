@@ -24,6 +24,7 @@ const extractVideoId = (link) => {
 
 const ProfilePost = ({username, p_image, post}) => {
   const { token } = useGlobalContext();
+  const { currentUser } = useGlobalContext();
   
   const dateObject = new Date(post.date_created);
   const date = dateObject.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
@@ -82,9 +83,10 @@ const ProfilePost = ({username, p_image, post}) => {
         <div className={styles.post_date}>{date}</div>
       </div>
       
+      {currentUser === username &&
       <div onClick={()=>(setIsDeleteOpen(true))} onMouseLeave={()=>(setIsDeleteOpen(false))} className={styles.editbtn}>
         {isDeleteOpen ? (<div onClick={handleDelete} className={styles.delete_icon_box}><FaTrash color="red"/></div>) : (<HiDotsHorizontal />)}
-      </div>
+      </div>}
 
       {isDeleteOverlayOpen && <div className={styles.delete_window}>
         <div className={styles.delete_window_text}>Post has been deleted.</div>
