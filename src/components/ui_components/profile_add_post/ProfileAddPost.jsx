@@ -113,15 +113,9 @@ const ProfileAddPost = ({userData}) => {
 
   <div className={`${styles.margin} ${styles.box}`}>
     <div className={styles.status_menu}>
-      <a className={`${styles.status_menu_item} ${styles.active_st}`} href="#">
-        Status
-      </a>
-      {/* <a className={styles.status_menu_item} href="#">
-        Photo
-      </a>
-      <a className={styles.status_menu_item} href="#">
-        Video
-      </a> */}
+      <div className={`${styles.status_menu_item} ${styles.active_st}`}>
+        Share a post
+      </div>
     </div>
     <div className={styles.status_main}>
       <img src={userData.p_image_link} className={styles.status_img}/>

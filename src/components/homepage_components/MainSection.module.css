@@ -2,14 +2,13 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  background-color: #181d2f;
 }
 
 .main_container {
   padding: 20px;
   flex-grow: 1;
   overflow: auto;
-  background-color: #24273b;
+  background-color: var(--bg2-color);
 }
 
 .timeline {
@@ -27,4 +26,31 @@
 .timeline_right {
   flex-grow: 1;
   padding-left: 20px;
+}
+
+.load_more{
+  width: 100%;
+  height: 40px;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-bottom: 10px; */
+  cursor: pointer;
+
+}
+
+.load_more:hover{
+  background-color: var(--bg-hover);
+}
+
+.no_posts{
+  width: 100%;
+  height: 40px;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

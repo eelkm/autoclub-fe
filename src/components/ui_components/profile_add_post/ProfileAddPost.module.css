@@ -13,7 +13,7 @@
 
 .status_menu_item{
   text-decoration: none;
-  color: #ccc8db;
+  color: var(--side-title);
   padding: 10px 14px;
   line-height: 0.7;
   font-family: var(--title-font);
@@ -24,7 +24,7 @@
 
 .active_st,
 .status_menu_item:hover {
-  background-color: #2e2e40;
+  background-color: var(--bg2-color);
   color: #fff;
 }
 
@@ -55,7 +55,7 @@
   color: #fff;
   max-width: calc(100% - 70px);
   &::placeholder {
-    color: #5c5d71;
+    color: var(--side2-title);
   }
 }
 
@@ -66,7 +66,7 @@
 
 .status_action {
   text-decoration: none;
-  color: #ccc8db;
+  color: var(--side-title);
   margin-right: 20px;
   display: flex;
   align-items: center;
@@ -109,7 +109,7 @@
 
 .video_input{
   width: 100%;
-  border: solid 1px #27272f;
+  border: solid 1px var(--border-color);
   padding: 5px;
   background-color: transparent;
   color: #fff;
@@ -117,6 +117,6 @@
   font-family: var(--title-font);
   font-weight: 500;
   &::placeholder {
-    color: #6b6c82;
+    color: var(--side2-title);
   }
 }

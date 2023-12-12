@@ -17,11 +17,10 @@ const ProfileNavBanner = ({userData}) => {
         className={styles.profile_cover}
       />
       <div className={styles.profile_menu}>
-        <a className={`${styles.profile_menu_link} ${styles.active}`}>Timeline</a>
+        <a className={`${styles.profile_menu_link} ${styles.active}`}>Profile</a>
         <a className={styles.profile_menu_link}>Garage</a>
         <a className={styles.profile_menu_link}>Friends</a>
-        <a className={styles.profile_menu_link}>Photos</a>
-        <a className={styles.profile_menu_link}>More</a>
+        <a className={styles.profile_menu_link}>Edit profile</a>
       </div>
     </div>
   );

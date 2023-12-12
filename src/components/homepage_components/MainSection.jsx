@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ProfileAbout from '../ui_components/profile_about/ProfileAbout';
 import ProfileAddPost from '../ui_components/profile_add_post/ProfileAddPost';
 import ProfileClubs from '../ui_components/profile_clubs/ProfileClubs';
@@ -7,26 +9,28 @@ import ProfilePost from '../ui_components/profile_post/ProfilePost';
 import TopSearchBar from '../ui_components/top_search_bar/TopSearchBar';
 import styles from './MainSection.module.css';
 import { useGlobalContext } from '../../contexts/GlobalContext';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 
-const MainSection = ({userData}) => {
+const MainSection = ({ userData }) => {
   const { currentUser } = useGlobalContext();
-
-  // 
   const { token } = useGlobalContext();
-  const startPost = 0;
-  const endPost = 10;
+
   const [posts, setPosts] = useState([]);
-  // Getting posts for user
+  const [startPost, setStartPost] = useState(0);
+  const [endPost, setEndPost] = useState(10);
+
+  const handleShowMore = () => {
+    setStartPost(0);
+    setEndPost(endPost + 10);
+  };
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/users/user_posts?username=${userData.username}&startPost=${startPost}&endPost=${endPost}`, {
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then(response => {
+    axios
+      .get(`http://localhost:5000/users/user_posts?username=${userData.username}&startPost=${startPost}&endPost=${endPost}`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
         const data = response.data;
         if (data.success) {
           setPosts(data.posts);
@@ -35,39 +39,43 @@ const MainSection = ({userData}) => {
         }
         console.log('DATA:', data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Failed to fetch user posts:', error);
       });
-  }, [userData]);
-
+  }, [userData, startPost, endPost, token]);
 
   return (
-<div className={styles.main}>
-  <TopSearchBar />
-  <div className={styles.main_container}>
-    <ProfileNavBanner userData={userData}/>
-    
-    <div className={styles.timeline}>
-      <div className={styles.timeline_left}>
-        <ProfileAbout userData={userData}/>
-        {currentUser === userData.username && <ProfileEvent />}
-        {currentUser !== userData.username && <ProfileClubs userData={userData}/>}
-      </div>
+    <div className={styles.main}>
+      <TopSearchBar />
+      <div className={styles.main_container}>
+        <ProfileNavBanner userData={userData} />
 
-      <div className={styles.timeline_right}>
-        {currentUser === userData.username && <ProfileAddPost userData={userData}/>}
+        <div className={styles.timeline}>
+          <div className={styles.timeline_left}>
+            <ProfileAbout userData={userData} />
+            {currentUser === userData.username && <ProfileEvent />}
+            {currentUser !== userData.username && <ProfileClubs userData={userData} />}
+          </div>
 
-        {posts.map((item, index) => (
-        <ProfilePost key={index} username={userData.username} p_image={userData.p_image_link} post={item}/>
-        ))}
-        
+          <div className={styles.timeline_right}>
+            {currentUser === userData.username && <ProfileAddPost userData={userData} />}
+
+            {posts.map((item, index) => (
+              <ProfilePost key={index} username={userData.username} p_image={userData.p_image_link} post={item} />
+            ))}
+
+            {posts.length === 0 ? (
+              <div className={styles.no_posts}>No posts to show</div>
+            ) : (
+              <div className={styles.load_more} onClick={handleShowMore}>
+                Show more
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      
     </div>
-  </div>
-</div>
-
   );
-}
+};
 
 export default MainSection;

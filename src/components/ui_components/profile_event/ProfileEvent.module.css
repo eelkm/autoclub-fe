@@ -48,7 +48,7 @@
 }
 
 .event_title {
-  color: #c3c5d5;
+  color: var(--side-title);
   margin-bottom: 5px;
   font-family: var(--title-font);
   font-weight: 600;

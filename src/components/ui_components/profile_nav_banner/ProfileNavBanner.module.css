@@ -85,6 +85,7 @@
   color: var(--side-title);
   transition: 0.3s;
   cursor: pointer;
+  z-index: 10;
 }
 
 .active,
@@ -92,4 +93,5 @@
   color: #fff;
   background-color: #1b1d2e;
   border-bottom: 3px solid #1488fa;
+  z-index: 10;
 }
