@@ -1,9 +1,14 @@
 import styles from "./ProfilePost.module.css";
+import axios from "axios";
 import YouTube from 'react-youtube';
+import { useState, useEffect } from "react";
+import { FaTrash } from "react-icons/fa6";
+import { HiDotsHorizontal } from "react-icons/hi";
+import { useGlobalContext } from "../../../contexts/GlobalContext";
 
 
 const isYouTubeLink = (url) => {
-  console.log(url);
+  // console.log(url);
   // Regular expression to match YouTube video URLs
   const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/(embed\/|v\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
   return youtubeRegex.test(url);
@@ -12,21 +17,61 @@ const isYouTubeLink = (url) => {
 const extractVideoId = (link) => {
   // Regular expression to get video ID from YouTube URL
   const match = link.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  console.log(match);
+  // console.log(match);
   return match && match[1];
 };
 
 
 const ProfilePost = ({username, p_image, post}) => {
+  const { token } = useGlobalContext();
   
   const dateObject = new Date(post.date_created);
   const date = dateObject.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isDeleteOverlayOpen, setIsDeleteOverlayOpen] = useState(false);
+
+
+
+  const handleDelete = async () => {
+    console.log('delete: ', post.id_profile_post);
+  
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/post_user/delete_profile_post`,
+        {
+          headers: {
+            Authorization: token,
+          },
+          data: {
+            id_profile_post: post.id_profile_post,
+          },
+        }
+      );
+  
+      const data = response.data;
+  
+      if (data.success) {
+        console.log('Post deleted');
+        setIsDeleteOverlayOpen(true);
+      } else {
+        console.error('Error:', data.error);
+      }
+  
+      console.log('DATA:', data);
+    } catch (error) {
+      console.error('Failed to delete post:', error);
+    }
+  };
+  
+  
   
 
 
 
   return (
     <div className={`${styles.post} ${styles.box}`}>
+
     <div className={styles.status_main}>
       <img
         src={p_image}
@@ -36,8 +81,17 @@ const ProfilePost = ({username, p_image, post}) => {
         <strong>{username}</strong> added new post
         <div className={styles.post_date}>{date}</div>
       </div>
-      <button className={styles.intro_menu} />
+      
+      <div onClick={()=>(setIsDeleteOpen(true))} onMouseLeave={()=>(setIsDeleteOpen(false))} className={styles.editbtn}>
+        {isDeleteOpen ? (<div onClick={handleDelete} className={styles.delete_icon_box}><FaTrash color="red"/></div>) : (<HiDotsHorizontal />)}
+      </div>
+
+      {isDeleteOverlayOpen && <div className={styles.delete_window}>
+        <div className={styles.delete_window_text}>Post has been deleted.</div>
+        </div>}
+
     </div>
+
     <div className={styles.post_content}>
       {post.text}
       {isYouTubeLink(post.post_media_url) ? (
