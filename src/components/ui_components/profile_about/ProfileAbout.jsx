@@ -5,7 +5,6 @@ const ProfileAbout = ({userData}) => {
     <div className={`${styles.intro} ${styles.box}`}>
       <div className={styles.intro_title}>
         About
-        <button className={styles.intro_menu} />
       </div>
       <div className={styles.info}>
 

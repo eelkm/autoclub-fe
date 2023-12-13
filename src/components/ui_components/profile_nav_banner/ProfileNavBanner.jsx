@@ -3,6 +3,7 @@ import { useGlobalContext } from "../../../contexts/GlobalContext";
 
 const ProfileNavBanner = ({userData}) => {
   const { profileNav, setProfileNav } = useGlobalContext();
+  const { currentUser } = useGlobalContext();
 
   const handleNavClick = (navLocation) => {
     // Updating the global context state when a navigation link is clicked
@@ -24,7 +25,7 @@ const ProfileNavBanner = ({userData}) => {
         <a onClick={() => handleNavClick("Profile")} className={`${styles.profile_menu_link} ${profileNav == 'Profile' && styles.active}`}>Profile</a>
         <a onClick={() => handleNavClick("Garage")} className={`${styles.profile_menu_link} ${profileNav == 'Garage' && styles.active}`}>Garage</a>
         <a onClick={() => handleNavClick("Friends")} className={`${styles.profile_menu_link} ${profileNav == 'Friends' && styles.active}`}>Friends</a>
-        <a onClick={() => handleNavClick("EditProfile")} className={`${styles.profile_menu_link} ${profileNav == 'EditProfile' && styles.active}`}>Edit profile</a>
+        {currentUser === userData.username && <a onClick={() => handleNavClick("EditProfile")} className={`${styles.profile_menu_link} ${profileNav == 'EditProfile' && styles.active}`}>Edit profile</a>}
       </div>
     </div>
   );

@@ -17,11 +17,6 @@ import EditProfile from './main_section_navbar_components/edit_profile/EditProfi
 const MainSection = ({ userData }) => {
   const { profileNav} = useGlobalContext();
 
-  useEffect(() => {
-    console.log(profileNav)
-  }, [profileNav]);
-
-
   return (
     <div className={styles.main}>
       <TopSearchBar />
@@ -31,7 +26,7 @@ const MainSection = ({ userData }) => {
         {profileNav == 'Profile' && <Profile userData={userData}/>}
         {profileNav == 'Garage' && <Garage />}
         {profileNav == 'Friends' && <Friends />}
-        {profileNav == 'EditProfile' && <EditProfile />}
+        {profileNav == 'EditProfile' && <EditProfile userData={userData}/>}
 
       </div>
     </div>

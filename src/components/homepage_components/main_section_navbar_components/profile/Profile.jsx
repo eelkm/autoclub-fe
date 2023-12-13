@@ -35,7 +35,7 @@ const Profile = ({userData}) => {
         } else {
           console.error('Error:', data.error);
         }
-        console.log('DATA:', data);
+        // console.log('DATA:', data);
       })
       .catch((error) => {
         console.error('Failed to fetch user posts:', error);
