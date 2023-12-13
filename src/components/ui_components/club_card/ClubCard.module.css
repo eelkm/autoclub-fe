@@ -8,6 +8,8 @@
 .user:hover {
   background-color: var(--bg-hover);
   border-radius: 25px;
+  color: white;
+  transition: all 0.1s ease-in-out;
 }
 
 .user_img {

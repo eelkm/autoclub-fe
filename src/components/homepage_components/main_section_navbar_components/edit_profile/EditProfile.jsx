@@ -265,7 +265,7 @@ const EditProfile = ({userData}) => {
       </div>
     </div>
     <div className={styles.status_main}>
-      <button className={styles.status_share} onClick={handleSave}>Save</button>
+      <button className={styles.status_save} onClick={handleSave}>Save</button>
     </div>
   </div>
   );

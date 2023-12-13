@@ -7,6 +7,6 @@
 .main_container {
   padding: 20px;
   flex-grow: 1;
-  overflow: auto;
+  overflow: scroll; 
   background-color: var(--bg2-color);
 }

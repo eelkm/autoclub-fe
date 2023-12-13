@@ -56,11 +56,35 @@
 
 .status_share {
   background-color: #1b86f9;
+  box-shadow: 0 0 10px #1b86f9;
   border: none;
   color: #fff;
   border-radius: 4px;
   padding: 10px 20px;
   margin-left: auto;
-  box-shadow: 0 0 20px #1b86f9;
   cursor: pointer;
+}
+
+.status_share:hover {
+  background-color: #1b86f9;
+  box-shadow: 0 0 20px #1b86f9;
+  transition: all 0.1s ease-in-out;
+}
+
+.status_save {
+  background-color: #1b86f9;
+  margin-top: 20px;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-left: auto;
+  box-shadow: 0 0 10px #1b86f9;
+  cursor: pointer;
+}
+
+.status_save:hover {
+  background-color: #1b86f9;
+  box-shadow: 0 0 20px #1b86f9;
+  transition: all 0.1s ease-in-out;
 }
