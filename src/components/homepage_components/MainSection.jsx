@@ -9,40 +9,18 @@ import ProfilePost from '../ui_components/profile_post/ProfilePost';
 import TopSearchBar from '../ui_components/top_search_bar/TopSearchBar';
 import styles from './MainSection.module.css';
 import { useGlobalContext } from '../../contexts/GlobalContext';
+import Profile from './main_section_navbar_components/profile/Profile';
+import Garage from './main_section_navbar_components/garage/Garage';
+import Friends from './main_section_navbar_components/friends/Friends';
+import EditProfile from './main_section_navbar_components/edit_profile/EditProfile';
 
 const MainSection = ({ userData }) => {
-  const { currentUser } = useGlobalContext();
-  const { token } = useGlobalContext();
-
-  const [posts, setPosts] = useState([]);
-  const [startPost, setStartPost] = useState(0);
-  const [endPost, setEndPost] = useState(10);
-
-  const handleShowMore = () => {
-    setStartPost(0);
-    setEndPost(endPost + 10);
-  };
+  const { profileNav} = useGlobalContext();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/users/user_posts?username=${userData.username}&startPost=${startPost}&endPost=${endPost}`, {
-        headers: {
-          Authorization: token,
-        },
-      })
-      .then((response) => {
-        const data = response.data;
-        if (data.success) {
-          setPosts(data.posts);
-        } else {
-          console.error('Error:', data.error);
-        }
-        console.log('DATA:', data);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch user posts:', error);
-      });
-  }, [userData, startPost, endPost, token]);
+    console.log(profileNav)
+  }, [profileNav]);
+
 
   return (
     <div className={styles.main}>
@@ -50,29 +28,11 @@ const MainSection = ({ userData }) => {
       <div className={styles.main_container}>
         <ProfileNavBanner userData={userData} />
 
-        <div className={styles.timeline}>
-          <div className={styles.timeline_left}>
-            <ProfileAbout userData={userData} />
-            {currentUser === userData.username && <ProfileEvent />}
-            {currentUser !== userData.username && <ProfileClubs userData={userData} />}
-          </div>
+        {profileNav == 'Profile' && <Profile userData={userData}/>}
+        {profileNav == 'Garage' && <Garage />}
+        {profileNav == 'Friends' && <Friends />}
+        {profileNav == 'EditProfile' && <EditProfile />}
 
-          <div className={styles.timeline_right}>
-            {currentUser === userData.username && <ProfileAddPost userData={userData} />}
-
-            {posts.map((item, index) => (
-              <ProfilePost key={index} username={userData.username} p_image={userData.p_image_link} post={item} />
-            ))}
-
-            {posts.length === 0 ? (
-              <div className={styles.no_posts}>No posts to show</div>
-            ) : (
-              <div className={styles.load_more} onClick={handleShowMore}>
-                Show more
-              </div>
-            )}
-          </div>
-        </div>
       </div>
     </div>
   );

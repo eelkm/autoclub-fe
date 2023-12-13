@@ -90,8 +90,8 @@
 
 .active,
 .profile_menu_link:hover {
-  color: #fff;
-  background-color: #1b1d2e;
-  border-bottom: 3px solid #1488fa;
+  color: white;
+  background-color: var(--bg2-color);
+  border-bottom: 3px solid var(--side-title);
   z-index: 10;
 }

@@ -68,6 +68,7 @@
 
 .post_detail {
   width: calc(100% - 110px);
+  color: var(--side-title);
 }
 
 .status_img {
@@ -80,7 +81,7 @@
 
 .post_date {
   font-size: 15px;
-  color: #595c6c;
+  color: var(--side2-title);
   margin-top: 4px;
 }
 
@@ -103,7 +104,7 @@
 .post_action {
   margin-right: 20px;
   text-decoration: none;
-  color: #a2a4b4;
+  color: var(--side-title);
   display: inline-flex;
   align-items: center;
   font-weight: 600;
