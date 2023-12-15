@@ -7,6 +7,7 @@ import styles from "./Profile.module.css";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { BackendURL } from "../../../../utils/constants";
 
 const Profile = ({userData}) => {
   const { currentUser } = useGlobalContext();
@@ -23,7 +24,7 @@ const Profile = ({userData}) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/user_posts?username=${userData.username}&startPost=${startPost}&endPost=${endPost}`, {
+      .get(`${BackendURL}/users/user_posts?username=${userData.username}&startPost=${startPost}&endPost=${endPost}`, {
         headers: {
           Authorization: token,
         },

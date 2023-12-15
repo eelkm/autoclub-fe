@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../contexts/GlobalContext';
+import { BackendURL } from '../utils/constants';
 
 const LoginComponent = ({ setToken }) => {
   const navigate = useNavigate(); // Used to redirect the user
@@ -12,7 +13,7 @@ const LoginComponent = ({ setToken }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/login', { username, password });
+      const response = await axios.post(`${BackendURL}/login`, { username, password });
       const authToken = response.data.token;
 
       setToken(authToken);

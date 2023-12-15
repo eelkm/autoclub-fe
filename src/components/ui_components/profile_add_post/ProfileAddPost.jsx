@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./ProfileAddPost.module.css";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
+import { BackendURL } from "../../../utils/constants";
 
 const ProfileAddPost = ({userData}) => {
   const { token } = useGlobalContext();
@@ -29,7 +30,7 @@ const ProfileAddPost = ({userData}) => {
       setFileName(selectedFile.name); // Save selected file name
 
       // Get secure S3 Secure URL
-      axios.get(`http://localhost:5000/s3url`,{
+      axios.get(`${BackendURL}/s3url`,{
         headers: {
           Authorization: token,
         }
@@ -89,7 +90,7 @@ const ProfileAddPost = ({userData}) => {
   
       try {
         // Save post to the database with error checking
-        const response = await axios.post(`http://localhost:5000/post_user/add_post`, {
+        const response = await axios.post(`${BackendURL}/post_user/add_post`, {
           text: text,
           post_media_url: handleUrlLogic(),
         }, {

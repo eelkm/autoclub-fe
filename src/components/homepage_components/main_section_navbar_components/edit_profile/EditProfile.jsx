@@ -3,6 +3,7 @@ import styles from "./EditProfile.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
+import { BackendURL } from "../../../../utils/constants"; 
 
 const EditProfile = ({userData}) => {
   const { token } = useGlobalContext();
@@ -25,7 +26,7 @@ const EditProfile = ({userData}) => {
   const postDescription = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:5000/users/update_desc_about',
+        `${BackendURL}/users/update_desc_about`,
         {
           desc_about: descAbout,
         },
@@ -66,7 +67,7 @@ const EditProfile = ({userData}) => {
       setFileName(selectedFile.name); // Save selected file name
 
       // Get secure S3 Secure URL
-      axios.get(`http://localhost:5000/s3url`,{
+      axios.get(`${BackendURL}/s3url`,{
         headers: {
           Authorization: token,
         }
@@ -107,7 +108,7 @@ const EditProfile = ({userData}) => {
     console.log(s3profileUrl)
     try {
       const response = await axios.post(
-        'http://localhost:5000/users/update_profile_picture',
+        `${BackendURL}/users/update_profile_picture`,
         {
           p_image_link: s3profileUrl,
         },
@@ -146,7 +147,7 @@ const EditProfile = ({userData}) => {
       setFileName2(selectedFile.name); // Save selected file name
 
       // Get secure S3 Secure URL
-      axios.get(`http://localhost:5000/s3url`,{
+      axios.get(`${BackendURL}/s3url`,{
         headers: {
           Authorization: token,
         }
@@ -188,7 +189,7 @@ const EditProfile = ({userData}) => {
     console.log(s3coverUrl)
     try {
       const response = await axios.post(
-        'http://localhost:5000/users/update_cover_picture',
+        `${BackendURL}/users/update_cover_picture`,
         {
           p_banner_link: s3coverUrl,
         },

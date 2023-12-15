@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BackendURL } from '../utils/constants';
 
 const RegisterComponent = () => {
   const [username, setUsername] = useState('');
@@ -7,7 +8,7 @@ const RegisterComponent = () => {
 
   const handleRegister = async () => {
     try {
-      await axios.post('http://localhost:5000/register', { username, password });
+      await axios.post(`${BackendURL}/register`, { username, password });
       console.log('Registration successful');
     } catch (error) {
       console.error('Registration failed');

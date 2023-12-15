@@ -7,6 +7,7 @@ import RightSide from './homepage_components/RightSide';
 import MainSection from './homepage_components/MainSection';
 import { useGlobalContext } from '../contexts/GlobalContext';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { BackendURL } from '../utils/constants';
 
 
 function Homepage({ token }) {
@@ -21,7 +22,7 @@ function Homepage({ token }) {
     // Gets the username of the logged in user
     const fetchUsername = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/users/get_username', {
+        const response = await axios.get(`${BackendURL}/users/get_username`, {
           headers: {
             'Authorization': token,
           },
@@ -45,7 +46,7 @@ function Homepage({ token }) {
       try {
         const usernameToSearch = location.pathname.split("/profile/")[1];
 
-        const response = await axios.get(`http://localhost:5000/get_user?username=${usernameToSearch}`, {
+        const response = await axios.get(`${BackendURL}/get_user?username=${usernameToSearch}`, {
           headers: { Authorization: `${token}` },
         });
         setUserData(response.data.user);

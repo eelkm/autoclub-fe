@@ -4,6 +4,7 @@ import styles from './RightSide.module.css';
 import ClubCard from '../ui_components/club_card/ClubCard';
 import { useGlobalContext } from '../../contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
+import { BackendURL } from '../../utils/constants';
 
 
 const RightSide = ({userData}) => {
@@ -39,7 +40,7 @@ const RightSide = ({userData}) => {
 
     const fetchUserRolesClubsData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/get_clubs_roles', {
+        const response = await axios.get(`${BackendURL}/get_clubs_roles`, {
           headers: { Authorization: `${token}` },
         });
 

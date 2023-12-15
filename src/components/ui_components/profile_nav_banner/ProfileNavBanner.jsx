@@ -1,5 +1,6 @@
 import styles from "./ProfileNavBanner.module.css";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
+import { NavConstants } from "../../../utils/constants";
 
 const ProfileNavBanner = ({userData}) => {
   const { profileNav, setProfileNav } = useGlobalContext();
@@ -22,10 +23,10 @@ const ProfileNavBanner = ({userData}) => {
         className={styles.profile_cover}
       />
       <div className={styles.profile_menu}>
-        <a onClick={() => handleNavClick("Profile")} className={`${styles.profile_menu_link} ${profileNav == 'Profile' && styles.active}`}>Profile</a>
-        <a onClick={() => handleNavClick("Garage")} className={`${styles.profile_menu_link} ${profileNav == 'Garage' && styles.active}`}>Garage</a>
-        <a onClick={() => handleNavClick("Friends")} className={`${styles.profile_menu_link} ${profileNav == 'Friends' && styles.active}`}>Friends</a>
-        {currentUser === userData.username && <a onClick={() => handleNavClick("EditProfile")} className={`${styles.profile_menu_link} ${profileNav == 'EditProfile' && styles.active}`}>Edit profile</a>}
+        <a onClick={() => handleNavClick(NavConstants.Profile)} className={`${styles.profile_menu_link} ${profileNav == NavConstants.Profile && styles.active}`}>Profile</a>
+        <a onClick={() => handleNavClick(NavConstants.Garage)} className={`${styles.profile_menu_link} ${profileNav == NavConstants.Garage && styles.active}`}>Garage</a>
+        <a onClick={() => handleNavClick(NavConstants.Friends)} className={`${styles.profile_menu_link} ${profileNav == NavConstants.Friends && styles.active}`}>Friends</a>
+        {currentUser === userData.username && <a onClick={() => handleNavClick(NavConstants.EditProfile)} className={`${styles.profile_menu_link} ${profileNav == NavConstants.EditProfile && styles.active}`}>Edit profile</a>}
       </div>
     </div>
   );

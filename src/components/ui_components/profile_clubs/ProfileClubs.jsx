@@ -3,6 +3,7 @@ import styles from "./ProfileClubs.module.css";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import ClubCard from "../club_card/ClubCard";
+import { BackendURL } from "../../../utils/constants";
 
 const ProfileClubs = ({userData}) => {
   const { token } = useGlobalContext();
@@ -11,7 +12,7 @@ const ProfileClubs = ({userData}) => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/clubs/member_of_clubs?username=${userData.username}`, {
+    axios.get(`${BackendURL}/clubs/member_of_clubs?username=${userData.username}`, {
       headers: {
         Authorization: token,
       },
