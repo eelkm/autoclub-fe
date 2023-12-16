@@ -3,6 +3,7 @@ import styles from "./ProfileAddPost.module.css";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { BackendURL } from "../../../utils/constants";
+import { uploadFileToS3 } from "../../../utils/ImageUpload";
 
 const ProfileAddPost = ({userData}) => {
   const { token } = useGlobalContext();
@@ -23,92 +24,61 @@ const ProfileAddPost = ({userData}) => {
     }
   };
 
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  }
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       console.log('Selected file:', selectedFile.name);
       setFileName(selectedFile.name); // Save selected file name
 
-      // Get secure S3 Secure URL
-      axios.get(`${BackendURL}/s3url`,{
-        headers: {
-          Authorization: token,
+      // Upload image to S3 bucket
+      uploadFileToS3(selectedFile, token).then((imageUrl) => {
+        if (imageUrl) {
+          setS3ImageUrl(imageUrl);
         }
-      })
-      .then(response => {
-        const data = response.data;
-        if (data.success) {
-          imageUpload(selectedFile, data.url); // Upload image to S3 bucket
-        } else {
-          console.error('Error:', data.error);
-        }
-      })
-      .catch(error => {
-        console.error('Failed to fetch:', error);
       });
     }
   }
-    
-    // Upload image with secure URL
-    const imageUpload = (selectedFile, url) => {
-      console.log(url)
-      console.log(selectedFile.name)
-      console.log(url.split('?')[0])
-      setS3ImageUrl(url.split('?')[0]); // Get image URL without query string
 
-      // Upload image to S3 bucket
-      axios.put(url, selectedFile, {
+  const handleUrlLogic = () => {
+    let finalUrl = ''
+    if (addVideoWindow) {
+      finalUrl = youtubeUrl;
+    } else {
+      finalUrl = s3imageUrl;
+    }
+
+    return finalUrl;
+  }
+
+  const handleSubmit = async () => {
+    console.log('Submit');
+    handleUrlLogic(); // Set final URL
+
+    try {
+      // Save post to the database with error checking
+      const response = await axios.post(`${BackendURL}/post_user/add_post`, {
+        text: text,
+        post_media_url: handleUrlLogic(),
+      }, {
         headers: {
-          'Content-Type': "multipart/form-data"
-        },
-      })
-      .catch(error => {
-        console.error('Failed to upload image to S3 bucket:', error);
-      });
-    }
-
-    const handleTextChange = (e) => {
-      setText(e.target.value);
-    }
-
-    const handleUrlLogic = () => {
-      let finalUrl = ''
-      if (addVideoWindow) {
-        finalUrl = youtubeUrl;
-      } else {
-        finalUrl = s3imageUrl;
-      }
-
-      return finalUrl;
-    }
-
-
-    const handleSubmit = async () => {
-      console.log('Submit');
-      handleUrlLogic(); // Set final URL
-      // console.log('Final URL:', finalUrl);
-  
-      try {
-        // Save post to the database with error checking
-        const response = await axios.post(`${BackendURL}/post_user/add_post`, {
-          text: text,
-          post_media_url: handleUrlLogic(),
-        }, {
-          headers: {
-            Authorization: token,
-          }
-        });
-  
-        if (response.status === 200) {
-          console.log('Post added successfully:', response.data);
-          window.location.reload();// Reload page after adding post
-        } else {
-          console.error('Failed to add post. Status:', response.status);
+          Authorization: token,
         }
-      } catch (error) {
-        console.error('Error while adding post:', error);
+      });
+
+      if (response.status === 200) {
+        console.log('Post added successfully:', response.data);
+        window.location.reload();// Reload page after adding post
+      } else {
+        console.error('Failed to add post. Status:', response.status);
       }
+    } catch (error) {
+      console.error('Error while adding post:', error);
     }
+  }
 
   return (
 

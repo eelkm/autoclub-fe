@@ -3,7 +3,8 @@ import styles from "./EditProfile.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
-import { BackendURL } from "../../../../utils/constants"; 
+import { BackendURL } from "../../../../utils/constants";
+import { uploadFileToS3 } from "../../../../utils/ImageUpload";
 
 const EditProfile = ({userData}) => {
   const { token } = useGlobalContext();
@@ -66,42 +67,12 @@ const EditProfile = ({userData}) => {
       console.log('Selected file:', selectedFile.name);
       setFileName(selectedFile.name); // Save selected file name
 
-      // Get secure S3 Secure URL
-      axios.get(`${BackendURL}/s3url`,{
-        headers: {
-          Authorization: token,
+      uploadFileToS3(selectedFile, token).then((imageUrl) => {
+        if (imageUrl) {
+          setS3ProfileUrl(imageUrl);
         }
-      })
-      .then(response => {
-        const data = response.data;
-        if (data.success) {
-          imageUpload(selectedFile, data.url); // Upload image to S3 bucket
-        } else {
-          console.error('Error:', data.error);
-        }
-      })
-      .catch(error => {
-        console.error('Failed to fetch:', error);
       });
     }
-  }
-
-  // Upload image with secure URL
-  const imageUpload = (selectedFile, url) => {
-    console.log(url)
-    console.log(selectedFile.name)
-    console.log(url.split('?')[0])
-    setS3ProfileUrl(url.split('?')[0]); // Get image URL without query string
-
-    // Upload image to S3 bucket
-    axios.put(url, selectedFile, {
-      headers: {
-        'Content-Type': "multipart/form-data"
-      },
-    })
-    .catch(error => {
-      console.error('Failed to upload image to S3 bucket:', error);
-    });
   }
 
   const postProfilePicture = async () => {
@@ -146,43 +117,12 @@ const EditProfile = ({userData}) => {
       console.log('Selected file:', selectedFile.name);
       setFileName2(selectedFile.name); // Save selected file name
 
-      // Get secure S3 Secure URL
-      axios.get(`${BackendURL}/s3url`,{
-        headers: {
-          Authorization: token,
+      uploadFileToS3(selectedFile, token).then((imageUrl) => {
+        if (imageUrl) {
+          setS3CoverUrl(imageUrl);
         }
-      })
-      .then(response => {
-        const data = response.data;
-        if (data.success) {
-          imageUpload2(selectedFile, data.url); // Upload image to S3 bucket
-        } else {
-          console.error('Error:', data.error);
-        }
-      })
-      .catch(error => {
-        console.error('Failed to fetch:', error);
       });
     }
-  }
-
-  // Upload image with secure URL
-
-  const imageUpload2 = (selectedFile, url) => {
-    console.log(url)
-    console.log(selectedFile.name)
-    console.log(url.split('?')[0])
-    setS3CoverUrl(url.split('?')[0]); // Get image URL without query string
-
-    // Upload image to S3 bucket
-    axios.put(url, selectedFile, {
-      headers: {
-        'Content-Type': "multipart/form-data"
-      },
-    })
-    .catch(error => {
-      console.error('Failed to upload image to S3 bucket:', error);
-    });
   }
 
   const postCoverPicture = async () => {
@@ -210,8 +150,6 @@ const EditProfile = ({userData}) => {
       console.error('An error occurred:', error.message);
     }
   };
-
-
 
 // =======================
 // Save changes to DB
