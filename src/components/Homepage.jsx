@@ -46,7 +46,7 @@ function Homepage({ token }) {
       try {
         const usernameToSearch = location.pathname.split("/profile/")[1];
 
-        const response = await axios.get(`${BackendURL}/get_user?username=${usernameToSearch}`, {
+        const response = await axios.get(`${BackendURL}/users/get_user?username=${usernameToSearch}`, {
           headers: { Authorization: `${token}` },
         });
         setUserData(response.data.user);

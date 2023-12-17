@@ -24,7 +24,7 @@ const Profile = ({userData}) => {
 
   useEffect(() => {
     axios
-      .get(`${BackendURL}/users/user_posts?username=${userData.username}&startPost=${startPost}&endPost=${endPost}`, {
+      .get(`${BackendURL}/post_user/user_posts?username=${userData.username}&startPost=${startPost}&endPost=${endPost}`, {
         headers: {
           Authorization: token,
         },

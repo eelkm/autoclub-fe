@@ -123,7 +123,9 @@ const ProfileAddPost = ({userData}) => {
         {addVideoWindow ? <div>Cancel</div> : <div>Add Video</div>}
       </div>}
 
-      <button className={styles.status_share} onClick={handleSubmit}>Post</button>
+      {/* If there is file and there are not image link, then cant submit */}
+      {fileName !== '' & s3imageUrl == '' ? <button className={styles.status_loading}>Loading...</button> : <button className={styles.status_share} onClick={handleSubmit}>Post</button> }
+      
     </div>
   </div>
 

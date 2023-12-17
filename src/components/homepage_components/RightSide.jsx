@@ -40,7 +40,7 @@ const RightSide = ({userData}) => {
 
     const fetchUserRolesClubsData = async () => {
       try {
-        const response = await axios.get(`${BackendURL}/get_clubs_roles`, {
+        const response = await axios.get(`${BackendURL}/clubs/get_clubs_roles`, {
           headers: { Authorization: `${token}` },
         });
 

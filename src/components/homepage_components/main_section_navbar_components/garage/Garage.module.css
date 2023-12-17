@@ -10,3 +10,7 @@
   cursor: pointer;
   margin-top: 20px;
 }
+
+.no_cars:hover{
+  background-color: var(--bg-color-hover);
+}

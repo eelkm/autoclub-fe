@@ -1,0 +1,138 @@
+.box {
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.status_menu {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.status_menu_item{
+  text-decoration: none;
+  color: var(--side-title);
+  padding: 10px 14px;
+  line-height: 0.7;
+  font-family: var(--title-font);
+  font-weight: 500;
+  border-radius: 20px;
+  margin-right: 5px;
+}
+
+.active_st,
+.status_menu_item:hover {
+  background-color: var(--bg2-color);
+  color: #fff;
+}
+
+.status_textarea {
+  flex-grow: 1;
+  height: 35px;
+  border-radius: 20px;
+  padding: 10px 20px;
+  /* background-color: transparent; */
+  background-color: var(--bg2-color);
+  border: none;
+  resize: none;
+  color: #fff;
+  max-width: calc(100% - 70px);
+  &::placeholder {
+    color: var(--side2-title);
+  }
+}
+
+.status_share {
+  background-color: #1b86f9;
+  box-shadow: 0 0 10px #1b86f9;
+  border: none;
+  color: #fff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.status_share:hover {
+  background-color: #1b86f9;
+  box-shadow: 0 0 20px #1b86f9;
+  transition: all 0.1s ease-in-out;
+}
+
+.status_save {
+  background-color: #1b86f9;
+  margin-top: 20px;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-left: auto;
+  box-shadow: 0 0 10px #1b86f9;
+  cursor: pointer;
+}
+
+.status_save:hover {
+  background-color: #1b86f9;
+  box-shadow: 0 0 20px #1b86f9;
+  transition: all 0.1s ease-in-out;
+}
+
+.status_loading {
+  background-color: var(--bg2-color);
+  margin-top: 20px;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-left: auto;
+}
+
+.status_main {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+  
+}
+
+.image{
+  width: 150px;
+  object-fit: cover;
+  margin: 20px;
+}
+
+.image_box{
+  margin-top: 10px;
+  border-radius: 20px;
+  background: var(--bg2-color);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image_container{
+  display: flex;
+  flex-direction: column;
+}
+
+.remove_button{
+  background-color: var(--bg-color);
+  border: none;
+  color: red;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-left: auto;
+  box-shadow: 0 0 10px var(--bg-color);
+  cursor: pointer;
+  margin: 10px;
+}
+
+.remove_button:hover {
+  background-color: var(--bg-color);
+  box-shadow: 0 0 20px var(--bg-color);
+  transition: all 0.1s ease-in-out;
+  background-color: red;
+  color: #fff;
+}
