@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import styles from './CarCard.module.css';
 import { useGlobalContext } from '../../../contexts/GlobalContext';
 import { HiDotsHorizontal } from 'react-icons/hi';
+import { MdCancel } from "react-icons/md";
+import EditCar from '../garage_edit_car/EditCar';
 
 
 const CarCard = ({username, car}) => {
@@ -15,13 +17,13 @@ const CarCard = ({username, car}) => {
       <div className={styles.inside_box}>
         <img src={car.first_photo} alt="" className={styles.car_cover} />
 
-        <img src={car.first_photo} alt="" className={`${styles.car_cover_underlay} ${isHovering && styles.show}`} />
+        <img src={car.first_photo} alt="" className={`${styles.car_cover_underlay} ${isHovering & !isEditOverlayOpen && styles.show}`} />
 
         <div className={styles.gradient_box}></div>
 
         {currentUser === username &&
         <div onClick={()=>(setIsEditOverlayOpen(!isEditOverlayOpen))} className={styles.editbtn}>
-          <HiDotsHorizontal />
+          {isEditOverlayOpen ? <MdCancel color='red'/> : <HiDotsHorizontal />}
         </div>}
         
 
@@ -47,7 +49,7 @@ const CarCard = ({username, car}) => {
 
       {isEditOverlayOpen &&
       <div className={styles.edit_window}>
-        <div>Edit window</div>
+        <EditCar car={car}/>
       </div>}
 
     </div>

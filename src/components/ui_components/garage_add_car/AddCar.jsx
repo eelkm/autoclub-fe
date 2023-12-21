@@ -140,7 +140,7 @@ const AddCar = () => {
         <div className={`${styles.status_menu_item} ${styles.active_st}`}>
           Description
         </div>
-        <textarea ref={carDescriptionRef} className={styles.status_textarea} placeholder="Write what you want.. Modifications etc."/>
+        <textarea ref={carDescriptionRef} className={styles.status_textarea_desc} placeholder="Write what you want.. Modifications etc."/>
       </div>
 
       <div className={styles.status_menu}>
