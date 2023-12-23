@@ -2,9 +2,10 @@
 import { Link } from 'react-router-dom';
 import styles from './LeftSide.module.css';
 import { useGlobalContext } from '../../contexts/GlobalContext';
+import { NavConstants } from '../../utils/constants';
 
 const LeftSide = () => {
-  const { currentUser } = useGlobalContext();
+  const { currentUser, setProfileNav} = useGlobalContext();
 
   return (
   <div className={styles.left_side}>
@@ -13,7 +14,7 @@ const LeftSide = () => {
     <div className={styles.side_wrapper}>
       <div className={styles.side_title}>MENU</div>
       <div className={styles.side_menu}>
-        <Link to={`/profile/${currentUser}`}>
+        <Link to={`/profile/${currentUser}`} onClick={()=>setProfileNav(NavConstants.Profile)}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
             <path d="M9 22V12h6v10" />

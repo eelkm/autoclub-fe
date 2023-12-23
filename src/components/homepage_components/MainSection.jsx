@@ -19,10 +19,12 @@ const MainSection = ({ userData }) => {
 
         {profileNav == 'Profile' && <Profile userData={userData}/>}
         {profileNav == 'Garage' && <Garage userData={userData}/>}
-        {profileNav == 'Friends' && <Friends />}
+        {profileNav == 'Friends' && <Friends userData={userData} />}
         {profileNav == 'EditProfile' && <EditProfile userData={userData}/>}
 
       </div>
+
+      
     </div>
   );
 };

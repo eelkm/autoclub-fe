@@ -1,0 +1,19 @@
+.box {
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.friend{
+  flex: 1;
+  border-radius: 50px;
+  margin: 10px;
+  min-width: 200px;
+  border: 1px solid var(--bg-hover);
+}

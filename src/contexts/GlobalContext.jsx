@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import { NavConstants } from '../utils/constants';
 
 const GlobalContext = createContext();
 
@@ -6,7 +7,7 @@ export const GlobalProvider = ({ children }) => {
   const [token, setToken] = useState('');
   const [currentUser, setCurrentUser] = useState('');
   const [currentUserImg, setCurrentUserImg] = useState('');
-  const [profileNav, setProfileNav] = useState('Profile');
+  const [profileNav, setProfileNav] = useState(NavConstants.Profile);
 
   return (
     <GlobalContext.Provider value={{
