@@ -1,20 +1,19 @@
-import styles from './Friends.module.css';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useGlobalContext } from '../../../../contexts/GlobalContext';
-import { BackendURL } from '../../../../utils/constants';
-import ClubCard from '../../../ui_components/club_card/ClubCard';
-import { useNavigate } from 'react-router-dom';
-import { NavConstants } from '../../../../utils/constants';
+import styles from "./Friends.module.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useGlobalContext } from "../../../../contexts/GlobalContext";
+import { BackendURL } from "../../../../utils/constants";
+import ClubCard from "../../../ui_components/club_card/ClubCard";
+import { useNavigate } from "react-router-dom";
+import { NavConstants } from "../../../../utils/constants";
 
-const Friends = ({userData}) => {
+const Friends = ({ userData }) => {
   const { token, setProfileNav } = useGlobalContext();
   const navigate = useNavigate();
   const [friends, setFriends] = useState([]);
 
   useEffect(() => {
     getFriends();
-
   }, []);
 
   const getFriends = async () => {
@@ -24,19 +23,19 @@ const Friends = ({userData}) => {
         {
           headers: {
             Authorization: token,
-          }
-        },
+          },
+        }
       );
-  
+
       const data = response.data;
-  
+
       if (data.success) {
         setFriends(data.friends);
       } else {
-        console.error('Error:', data.error);
+        console.error("Error:", data.error);
       }
     } catch (error) {
-      console.error('An error occurred:', error.message);
+      console.error("An error occurred:", error.message);
     }
   };
 
@@ -47,22 +46,23 @@ const Friends = ({userData}) => {
 
   return (
     <div className={styles.box}>
-      
-        {friends.map((friend) => {
-          return (
-            <div key={friend.username} className={styles.friend} onClick={()=>handleClick(friend.username)}>
-              <ClubCard
-                clubname={friend.username}
-                image={friend.p_image_link}
-              />
-            </div>
-          );
-        })}
+      {friends.map((friend) => {
+        return (
+          <div
+            key={friend.username}
+            className={styles.friend}
+            onClick={() => handleClick(friend.username)}
+          >
+            <ClubCard clubname={friend.username} image={friend.p_image_link} />
+          </div>
+        );
+      })}
 
-        {friends.length == 0 && <div className={styles.no_friends}>No friends yet</div>}
-        
+      {friends.length == 0 && (
+        <div className={styles.no_friends}>No friends yet</div>
+      )}
     </div>
   );
-}
+};
 
 export default Friends;

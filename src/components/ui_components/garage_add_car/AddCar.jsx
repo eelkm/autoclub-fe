@@ -1,10 +1,10 @@
-import styles from './AddCar.module.css';
-import { FaTrash } from 'react-icons/fa';
-import { useRef, useState } from 'react';
-import { useGlobalContext } from '../../../contexts/GlobalContext';
-import axios from 'axios';
-import { BackendURL } from '../../../utils/constants';
-import { uploadFileToS3 } from '../../../utils/ImageUpload';
+import styles from "./AddCar.module.css";
+import { FaTrash } from "react-icons/fa";
+import { useRef, useState } from "react";
+import { useGlobalContext } from "../../../contexts/GlobalContext";
+import axios from "axios";
+import { BackendURL } from "../../../utils/constants";
+import { uploadFileToS3 } from "../../../utils/ImageUpload";
 
 const AddCar = () => {
   const fileInputRef = useRef(null); // Reference to the hidden file input element
@@ -61,12 +61,11 @@ const AddCar = () => {
       if (data.success) {
         return data.insertedId;
       } else {
-        console.error('Error:', data.error);
+        console.error("Error:", data.error);
       }
     } catch (error) {
-      console.error('An error occurred:', error.message);
+      console.error("An error occurred:", error.message);
     }
-    
   };
 
   // Posts image to S3 and then posts the image URL to the database
@@ -98,12 +97,12 @@ const AddCar = () => {
       const data = response.data;
 
       if (data.success) {
-        console.log('Success:', data.message);
+        console.log("Success:", data.message);
       } else {
-        console.error('Error:', data.error);
+        console.error("Error:", data.error);
       }
     } catch (error) {
-      console.error('An error occurred:', error.message);
+      console.error("An error occurred:", error.message);
     }
   };
 
@@ -116,31 +115,42 @@ const AddCar = () => {
       await postImage(addedCarId, selectedFiles[i]);
     }
     setIsLoading(false);
-    window.location.reload();// Reload page after adding car
+    window.location.reload(); // Reload page after adding car
   };
 
   return (
     <div className={styles.box}>
-
       <div className={styles.status_menu}>
         <div className={`${styles.status_menu_item} ${styles.active_st}`}>
           Car brand and model
         </div>
-        <textarea ref={carBrandRef} className={styles.status_textarea} placeholder="For example - Honda Prelude / BMW E39"/>
+        <textarea
+          ref={carBrandRef}
+          className={styles.status_textarea}
+          placeholder="For example - Honda Prelude / BMW E39"
+        />
       </div>
 
       <div className={styles.status_menu}>
         <div className={`${styles.status_menu_item} ${styles.active_st}`}>
           Year of car
         </div>
-        <textarea ref={carYearRef} className={styles.status_textarea} placeholder="For example - 1998"/>
+        <textarea
+          ref={carYearRef}
+          className={styles.status_textarea}
+          placeholder="For example - 1998"
+        />
       </div>
 
       <div className={styles.status_menu}>
         <div className={`${styles.status_menu_item} ${styles.active_st}`}>
           Description
         </div>
-        <textarea ref={carDescriptionRef} className={styles.status_textarea_desc} placeholder="Write what you want.. Modifications etc."/>
+        <textarea
+          ref={carDescriptionRef}
+          className={styles.status_textarea_desc}
+          placeholder="Write what you want.. Modifications etc."
+        />
       </div>
 
       <div className={styles.status_menu}>
@@ -149,15 +159,28 @@ const AddCar = () => {
         </div>
         <button onClick={handleButtonClick} className={styles.status_share}>
           <div>Add Image</div>
-          <input type="file" id="fileInput" style={{ display: 'none' }} ref={fileInputRef} onChange={handleFileChange} />
+          <input
+            type="file"
+            id="fileInput"
+            style={{ display: "none" }}
+            ref={fileInputRef}
+            onChange={handleFileChange}
+          />
         </button>
       </div>
 
       <div className={styles.image_box}>
         {selectedFiles.map((file, index) => (
           <div key={index} className={styles.image_container}>
-            <img className={styles.image} src={URL.createObjectURL(file)} alt={`Added image ${index + 1}`} />
-            <button className={styles.remove_button} onClick={() => handleRemoveImage(index)}>
+            <img
+              className={styles.image}
+              src={URL.createObjectURL(file)}
+              alt={`Added image ${index + 1}`}
+            />
+            <button
+              className={styles.remove_button}
+              onClick={() => handleRemoveImage(index)}
+            >
               <FaTrash />
             </button>
           </div>
@@ -165,12 +188,16 @@ const AddCar = () => {
       </div>
 
       <div className={styles.status_main}>
-        {isLoading ? <button className={styles.status_loading}>Loading</button>
-        : <button className={styles.status_save} onClick={() => handleSubmit()}>Save</button>}
+        {isLoading ? (
+          <button className={styles.status_loading}>Loading</button>
+        ) : (
+          <button className={styles.status_save} onClick={() => handleSubmit()}>
+            Save
+          </button>
+        )}
       </div>
-
     </div>
   );
-}
+};
 
 export default AddCar;

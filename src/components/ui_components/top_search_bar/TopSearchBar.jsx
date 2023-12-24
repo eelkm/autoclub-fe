@@ -21,6 +21,6 @@ const TopSearchBar = () => {
       </button>
     </div>
   );
-}
+};
 
 export default TopSearchBar;

@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BackendURL } from "../../../../utils/constants";
 
-const Profile = ({userData}) => {
+const Profile = ({ userData }) => {
   const { currentUser } = useGlobalContext();
   const { token } = useGlobalContext();
 
@@ -24,22 +24,25 @@ const Profile = ({userData}) => {
 
   useEffect(() => {
     axios
-      .get(`${BackendURL}/post_user/user_posts?username=${userData.username}&startPost=${startPost}&endPost=${endPost}`, {
-        headers: {
-          Authorization: token,
-        },
-      })
+      .get(
+        `${BackendURL}/post_user/user_posts?username=${userData.username}&startPost=${startPost}&endPost=${endPost}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
       .then((response) => {
         const data = response.data;
         if (data.success) {
           setPosts(data.posts);
         } else {
-          console.error('Error:', data.error);
+          console.error("Error:", data.error);
         }
         // console.log('DATA:', data);
       })
       .catch((error) => {
-        console.error('Failed to fetch user posts:', error);
+        console.error("Failed to fetch user posts:", error);
       });
   }, [userData, startPost, endPost, token]);
 
@@ -48,14 +51,23 @@ const Profile = ({userData}) => {
       <div className={styles.timeline_left}>
         <ProfileAbout userData={userData} />
         {currentUser === userData.username && <ProfileEvent />}
-        {currentUser !== userData.username && <ProfileClubs userData={userData} />}
+        {currentUser !== userData.username && (
+          <ProfileClubs userData={userData} />
+        )}
       </div>
 
       <div className={styles.timeline_right}>
-        {currentUser === userData.username && <ProfileAddPost userData={userData} />}
+        {currentUser === userData.username && (
+          <ProfileAddPost userData={userData} />
+        )}
 
         {posts.map((item, index) => (
-          <ProfilePost key={index} username={userData.username} p_image={userData.p_image_link} post={item} />
+          <ProfilePost
+            key={index}
+            username={userData.username}
+            p_image={userData.p_image_link}
+            post={item}
+          />
         ))}
 
         {posts.length === 0 ? (
@@ -68,6 +80,6 @@ const Profile = ({userData}) => {
       </div>
     </div>
   );
-}
+};
 
 export default Profile;
