@@ -95,3 +95,30 @@
   border-bottom: 3px solid var(--side-title);
   z-index: 10;
 }
+
+.follow_btn {
+  background-color: #1b86f9;
+  box-shadow: 0 0 10px #1b86f9;
+  margin-left: 20px;
+  border-radius: 4px;
+  padding: 7px 20px;
+  font-size: small;
+  cursor: pointer;
+}
+
+.follow_btn:hover {
+  background-color: #1b86f9;
+  box-shadow: 0 0 20px #1b86f9;
+  transition: all 0.1s ease-in-out;
+}
+
+.following_btn {
+  background-color: var(--bg-color);
+  box-shadow: 0 0 10px var(--bg-color);
+  margin-left: 20px;
+  border-radius: 4px;
+  padding: 7px 20px;
+  font-size: small;
+  cursor: pointer;
+}
+
