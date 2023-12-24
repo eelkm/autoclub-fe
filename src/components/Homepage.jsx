@@ -1,13 +1,13 @@
-// Homepage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Homepage.module.css';
-import LeftSide from './homepage_components/LeftSide';
-import RightSide from './homepage_components/RightSide';
-import MainSection from './homepage_components/MainSection';
+import LeftSide from './homepage_components/left_side/LeftSide';
+import RightSide from './homepage_components/right_side/RightSide';
+import MainSection from './homepage_components/main_section/MainSection';
 import { useGlobalContext } from '../contexts/GlobalContext';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Routes, Route } from 'react-router-dom';
 import { BackendURL } from '../utils/constants';
+import CarSection from './homepage_components/car_section/CarSection';
 
 
 function Homepage({ token }) {
@@ -44,7 +44,8 @@ function Homepage({ token }) {
     // Gets the user data of the user whose profile is being viewed
     const fetchUserData = async () => {
       try {
-        const usernameToSearch = location.pathname.split("/profile/")[1];
+        const pathParts = location.pathname.split("/profile/");
+        const usernameToSearch = pathParts[1] ? pathParts[1].split("/")[0] : null;
 
         const response = await axios.get(`${BackendURL}/users/get_user?username=${usernameToSearch}`, {
           headers: { Authorization: `${token}` },
@@ -67,7 +68,12 @@ function Homepage({ token }) {
         <div className="container">
           <LeftSide />
 
-          <MainSection userData={userData}/>
+          <Routes>
+            <Route path="/profile/:username" element={<MainSection userData={userData}/>} />
+            <Route path="/profile/:username/car/:carId" element={<CarSection userData={userData}/>} />
+          
+
+          </Routes>
 
           <RightSide userData={userData}/>
         </div>

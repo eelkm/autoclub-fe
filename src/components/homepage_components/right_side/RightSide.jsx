@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styles from './RightSide.module.css';
-import ClubCard from '../ui_components/club_card/ClubCard';
-import { useGlobalContext } from '../../contexts/GlobalContext';
+import ClubCard from '../../ui_components/club_card/ClubCard';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
 import { useNavigate } from 'react-router-dom';
-import { BackendURL } from '../../utils/constants';
+import { BackendURL } from '../../../utils/constants';
 
 
 const RightSide = ({userData}) => {

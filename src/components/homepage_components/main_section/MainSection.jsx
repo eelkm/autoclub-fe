@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import ProfileNavBanner from '../ui_components/profile_nav_banner/ProfileNavBanner';
-import TopSearchBar from '../ui_components/top_search_bar/TopSearchBar';
+import ProfileNavBanner from '../../ui_components/profile_nav_banner/ProfileNavBanner';
+import TopSearchBar from '../../ui_components/top_search_bar/TopSearchBar';
 import styles from './MainSection.module.css';
-import { useGlobalContext } from '../../contexts/GlobalContext';
-import Profile from './main_section_navbar_components/profile/Profile';
-import Garage from './main_section_navbar_components/garage/Garage';
-import Friends from './main_section_navbar_components/friends/Friends';
-import EditProfile from './main_section_navbar_components/edit_profile/EditProfile';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
+import Profile from '../main_section_navbar_components/profile/Profile';
+import Garage from '../main_section_navbar_components/garage/Garage';
+import Friends from '../main_section_navbar_components/friends/Friends';
+import EditProfile from '../main_section_navbar_components/edit_profile/EditProfile';
 
 const MainSection = ({ userData }) => {
   const { profileNav} = useGlobalContext();

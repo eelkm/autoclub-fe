@@ -1,8 +1,8 @@
 
 import { Link } from 'react-router-dom';
 import styles from './LeftSide.module.css';
-import { useGlobalContext } from '../../contexts/GlobalContext';
-import { NavConstants } from '../../utils/constants';
+import { useGlobalContext } from '../../../contexts/GlobalContext';
+import { NavConstants } from '../../../utils/constants';
 
 const LeftSide = () => {
   const { currentUser, setProfileNav} = useGlobalContext();
