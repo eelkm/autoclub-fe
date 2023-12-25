@@ -21,7 +21,6 @@ const CarCard = ({ username, car }) => {
   return (
     <div
       className={styles.box}
-      onClick={handleClick}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -51,7 +50,7 @@ const CarCard = ({ username, car }) => {
           </div>
         )}
 
-        <div className={styles.text_box}>
+        <div className={styles.text_box} onClick={handleClick}>
           <p className={styles.car_year}>{car.year}</p>
           <p className={styles.car_name}>{car.make_model}</p>
           <p className={styles.car_description}>{car.desc_car}</p>

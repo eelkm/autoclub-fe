@@ -1,0 +1,60 @@
+.slider {
+  background-color: var(--bg-color);
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.button_left {
+  background-color: var(--bg-color);
+  border: none;
+  border-radius: 0 15px 15px 0;
+  color: white;
+  padding: 30px 10px;
+  padding-left: 5px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% - 40px);
+  left: 0;
+}
+
+.button_right {
+  background-color: var(--bg-color);
+  border: none;
+  border-radius: 15px 0 0 15px;
+  color: white;
+  padding: 30px 10px;
+  padding-right: 5px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% - 40px);
+  right: 0;
+}
+
+.button_left:hover,
+.button_right:hover {
+  background-color: white;
+  color: var(--bg2-color);
+}
