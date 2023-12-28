@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./Homepage.module.css";
 import LeftSide from "./homepage_components/left_side/LeftSide";
 import RightSide from "./homepage_components/right_side/RightSide";
 import MainSection from "./homepage_components/main_section/MainSection";

@@ -11,3 +11,78 @@
   overflow-x: auto;
   background-color: var(--bg2-color);
 }
+
+.desc {
+  display: flex;
+  align-items: center;
+  /* background-color: rgb(0, 0, 0); */
+  margin-top: 10px;
+
+  img {
+    width: 40px;
+    height: 40px;
+    object-fit: fill;
+    border-radius: 100%;
+  }
+}
+
+.desc_box {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  padding: 15px 30px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: var(--bg-color);
+}
+
+.user:hover {
+  background-color: var(--bg-hover);
+}
+
+.car {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  background-color: var(--bg-color);
+  height: 40px;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+.text {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--side-title);
+  margin-left: 8px;
+  padding-right: 15px;
+}
+
+.hearth {
+  padding: 5px;
+  border-radius: 20px;
+  margin-left: 10px;
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: var(--bg-color);
+}
+
+.h_icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.h_icon:hover {
+  color: red;
+}
