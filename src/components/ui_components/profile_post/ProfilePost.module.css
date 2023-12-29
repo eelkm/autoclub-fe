@@ -14,7 +14,7 @@
   flex-wrap: wrap;
 }
 
-.editbtn{
+.editbtn {
   border: solid 2px var(--border-color);
   width: 40px;
   height: 40px;
@@ -24,11 +24,11 @@
   align-items: center;
 }
 
-.editbtn:hover{
+.editbtn:hover {
   background-color: var(--bg-hover);
 }
 
-.delete_icon_box{
+.delete_icon_box {
   height: 100%;
   width: 100%;
   display: flex;
@@ -38,7 +38,7 @@
   border: solid 2px red;
 }
 
-.delete_window{
+.delete_window {
   position: absolute;
   top: 0;
   left: 0;
@@ -115,4 +115,8 @@
     width: 16px;
     margin-right: 6px;
   }
+}
+
+.h_icon {
+  cursor: pointer;
 }

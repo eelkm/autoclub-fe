@@ -2,10 +2,11 @@ import styles from "./ProfilePost.module.css";
 import axios from "axios";
 import YouTube from "react-youtube";
 import { useState, useEffect } from "react";
-import { FaTrash } from "react-icons/fa6";
+import { FaHeart, FaTrash } from "react-icons/fa6";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { BackendURL } from "../../../utils/constants";
+import { LuHeart } from "react-icons/lu";
 
 const isYouTubeLink = (url) => {
   // console.log(url);
@@ -28,6 +29,8 @@ const ProfilePost = ({ username, p_image, post }) => {
   const { token } = useGlobalContext();
   const { currentUser } = useGlobalContext();
 
+  const [like, setLike] = useState(0);
+
   const dateObject = new Date(post.date_created);
   const date = dateObject.toLocaleDateString("en-US", {
     month: "long",
@@ -38,6 +41,7 @@ const ProfilePost = ({ username, p_image, post }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isDeleteOverlayOpen, setIsDeleteOverlayOpen] = useState(false);
 
+  // Deletes the post
   const handleDelete = async () => {
     console.log("delete: ", post.id_profile_post);
 
@@ -66,6 +70,32 @@ const ProfilePost = ({ username, p_image, post }) => {
       console.log("DATA:", data);
     } catch (error) {
       console.error("Failed to delete post:", error);
+    }
+  };
+
+  const handleLikeClick = async () => {
+    try {
+      const response = await axios.post(
+        `${BackendURL}/post_user/like_post`,
+        {
+          id_profile_post: post.id_profile_post,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      const data = response.data;
+
+      if (data.success) {
+        setLike(1);
+      } else {
+        console.error("Error:", data.error);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error.message);
     }
   };
 
@@ -115,19 +145,20 @@ const ProfilePost = ({ username, p_image, post }) => {
         )}
       </div>
       <div className={styles.post_actions}>
-        <a href="#" className={styles.post_action}>
-          <svg
-            stroke="currentColor"
-            strokeWidth={2}
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            viewBox="0 0 24 24"
-          >
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-          </svg>
-          {post.likes}
-        </a>
+        <div href="#" className={styles.post_action}>
+          {post.has_liked == 1 ? (
+            <FaHeart color="red" />
+          ) : (
+            <>
+              {like == 0 ? (
+                <LuHeart onClick={handleLikeClick} className={styles.h_icon} />
+              ) : (
+                <FaHeart color="red" />
+              )}
+            </>
+          )}
+          {post.like_count + like}
+        </div>
         <a href="#" className={styles.post_action}>
           <svg
             stroke="currentColor"

@@ -1,0 +1,31 @@
+.intro {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.intro_title {
+  font-family: var(--title-font);
+  color: var(--side-title);
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}

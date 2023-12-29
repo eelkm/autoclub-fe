@@ -8,6 +8,7 @@ import { useGlobalContext } from "../../../../contexts/GlobalContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BackendURL } from "../../../../utils/constants";
+import ProfileStats from "../../../ui_components/profile_stats/ProfileStats";
 
 const Profile = ({ userData }) => {
   const { currentUser } = useGlobalContext();
@@ -49,6 +50,7 @@ const Profile = ({ userData }) => {
   return (
     <div className={styles.timeline}>
       <div className={styles.timeline_left}>
+        <ProfileStats userData={userData} />
         <ProfileAbout userData={userData} />
         {currentUser === userData.username && <ProfileEvent />}
         {currentUser !== userData.username && (
