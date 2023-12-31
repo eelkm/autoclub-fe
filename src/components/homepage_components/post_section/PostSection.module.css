@@ -1,0 +1,12 @@
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg2-color);
+}
+
+.box {
+  margin: 20px;
+  overflow-y: scroll;
+  overflow-x: auto;
+}

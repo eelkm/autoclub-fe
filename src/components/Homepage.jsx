@@ -7,6 +7,7 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
 import { BackendURL } from "../utils/constants";
 import CarSection from "./homepage_components/car_section/CarSection";
+import PostSection from "./homepage_components/post_section/PostSection";
 
 function Homepage({ token }) {
   const navigate = useNavigate();
@@ -75,6 +76,10 @@ function Homepage({ token }) {
             <Route
               path="/profile/:username/car/:carId"
               element={<CarSection userData={userData} />}
+            />
+            <Route
+              path="/profile/:username/post/:postId"
+              element={<PostSection userData={userData} />}
             />
           </Routes>
 

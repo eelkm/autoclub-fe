@@ -95,6 +95,9 @@
   object-position: center;
   border-radius: 4px;
   margin-top: 10px;
+
+  display: flex;
+  justify-content: center;
 }
 
 .post_actions {

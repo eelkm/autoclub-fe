@@ -7,6 +7,8 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { BackendURL } from "../../../utils/constants";
 import { LuHeart } from "react-icons/lu";
+import { Link, useNavigate } from "react-router-dom";
+import { BiComment } from "react-icons/bi";
 
 const isYouTubeLink = (url) => {
   // console.log(url);
@@ -28,6 +30,7 @@ const extractVideoId = (link) => {
 const ProfilePost = ({ username, p_image, post }) => {
   const { token } = useGlobalContext();
   const { currentUser } = useGlobalContext();
+  const navigate = useNavigate();
 
   const [like, setLike] = useState(0);
 
@@ -99,12 +102,25 @@ const ProfilePost = ({ username, p_image, post }) => {
     }
   };
 
+  // Handle user click
+  const handleUserClick = () => {
+    navigate(`/profile/${username}`);
+  };
+
   return (
     <div className={`${styles.post} ${styles.box}`}>
       <div className={styles.status_main}>
-        <img src={p_image} className={styles.status_img} />
+        <img
+          onClick={handleUserClick}
+          src={p_image}
+          className={styles.status_img}
+          style={{ cursor: "pointer" }}
+        />
         <div className={styles.post_detail}>
-          <strong>{username}</strong> added new post
+          <strong onClick={handleUserClick} style={{ cursor: "pointer" }}>
+            {username}
+          </strong>{" "}
+          added new post
           <div className={styles.post_date}>{date}</div>
         </div>
 
@@ -141,7 +157,13 @@ const ProfilePost = ({ username, p_image, post }) => {
             className={styles.post_photo}
           />
         ) : (
-          <img src={post.post_media_url} alt="" className={styles.post_photo} />
+          <Link to={`/profile/${username}/post/${post.id_profile_post}`}>
+            <img
+              src={post.post_media_url}
+              alt=""
+              className={styles.post_photo}
+            />
+          </Link>
         )}
       </div>
       <div className={styles.post_actions}>
@@ -159,20 +181,13 @@ const ProfilePost = ({ username, p_image, post }) => {
           )}
           {post.like_count + like}
         </div>
-        <a href="#" className={styles.post_action}>
-          <svg
-            stroke="currentColor"
-            strokeWidth={2}
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="css-i6dzq1"
-            viewBox="0 0 24 24"
-          >
-            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-          </svg>
+        <Link
+          to={`/profile/${username}/post/${post.id_profile_post}`}
+          className={styles.post_action}
+        >
+          <BiComment />
           {post.comment_count}
-        </a>
+        </Link>
       </div>
     </div>
   );
