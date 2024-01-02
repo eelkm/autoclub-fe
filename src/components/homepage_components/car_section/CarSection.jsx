@@ -152,7 +152,7 @@ const CarSection = ({ userData }) => {
 
           <div className={styles.desc_box}>{carData.desc_car}</div>
 
-          <Comments carId={carId} />
+          <Comments car_id={carId} />
         </div>
       )}
     </div>

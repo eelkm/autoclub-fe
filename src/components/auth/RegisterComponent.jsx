@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { BackendURL } from "../../utils/constants";
 import styles from "./Auth.module.css";
-import logo from "../../assets/Logo 500.png";
 
 const RegisterComponent = ({ setShowLogin }) => {
   const [username, setUsername] = useState("");

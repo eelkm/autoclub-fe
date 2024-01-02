@@ -54,7 +54,7 @@ const PostSection = ({ userData }) => {
           />
         )}
 
-        <Comments />
+        <Comments profile_post_id={postId} />
       </div>
     </div>
   );
