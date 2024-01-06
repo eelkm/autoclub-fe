@@ -6,11 +6,14 @@
   background-color: var(--bg-color);
   overflow: auto;
   flex-shrink: 0;
-}
 
-.left_side_button {
-  width: 56px;
-  overflow: hidden;
+  @media screen and (max-width: 1280px) {
+    width: 180px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 70px;
+  }
 }
 
 .logo {
@@ -30,10 +33,35 @@
     rgba(24, 24, 24, 1) 76%,
     rgba(24, 24, 24, 0) 100%
   );
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+}
+
+.image_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 1001px) {
+    display: none;
+  }
+}
+
+.logo_image {
+  width: 50px;
+  height: 50px;
 }
 
 .side_wrapper {
   padding: 30px;
+
+  @media screen and (max-width: 1000px) {
+    padding: 10px;
+  }
 }
 
 .side_title {
@@ -42,31 +70,51 @@
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 }
 
 .side_menu {
   display: flex;
   flex-direction: column;
-  font-size: 15px;
+  font-size: 16px;
   white-space: nowrap;
-
-  svg {
-    margin-right: 16px;
-    width: 16px;
-  }
 
   a {
     text-decoration: none;
     color: var(--side2-title);
     display: flex;
     align-items: center;
+    padding-top: 10px;
 
     &:hover {
       color: #fff;
     }
-    
+
     &:not(:last-child) {
       margin-bottom: 20px;
     }
   }
+
+  span {
+    margin-left: 10px;
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    font-size: 20px;
+    padding-left: 15px;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  font-weight: 900;
+  padding: 0;
 }

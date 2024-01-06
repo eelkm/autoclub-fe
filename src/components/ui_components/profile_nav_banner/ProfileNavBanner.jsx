@@ -102,7 +102,7 @@ const ProfileNavBanner = ({ userData }) => {
       <div className={styles.profile_avatar}>
         <img
           src={userData.p_image_link}
-          alt=""
+          alt="-"
           className={styles.profile_img}
         />
         <div className={styles.profile_name}>
@@ -125,11 +125,13 @@ const ProfileNavBanner = ({ userData }) => {
           )}
         </div>
       </div>
-      <img
-        src={userData.p_banner_link}
-        alt=""
-        className={styles.profile_cover}
-      />
+      {userData.p_banner_link !== null && (
+        <img
+          src={userData.p_banner_link}
+          alt=""
+          className={styles.profile_cover}
+        />
+      )}
       <div className={styles.profile_menu}>
         <a
           onClick={() => handleNavClick(NavConstants.Profile)}

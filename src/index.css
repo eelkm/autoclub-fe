@@ -10,6 +10,8 @@
   --side-title: #cecece;
   --side2-title: #a0a0a0;
   --button: #a6a6a6;
+  --lg: 1280px;
+  --md: 1000px;
 }
 
 * {
@@ -33,28 +35,24 @@ body {
   margin: 0 auto;
 }
 
-
-
-
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #383838 #0c0c0c;
-  }
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #383838 #0c0c0c;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 12px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: #0c0c0c;
-  }
+*::-webkit-scrollbar-track {
+  background: #0c0c0c;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #383838;
-    border-radius: 10px;
-    border: 3px none #ffffff;
-  }
-
+*::-webkit-scrollbar-thumb {
+  background-color: #383838;
+  border-radius: 10px;
+  border: 3px none #ffffff;
+}

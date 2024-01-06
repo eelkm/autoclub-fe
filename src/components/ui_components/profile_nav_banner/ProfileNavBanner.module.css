@@ -15,22 +15,6 @@
     object-position: center;
     border-radius: 4px;
   }
-
-  &:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    top: 0;
-    background-image: url("https://images.unsplash.com/photo-1508247967583-7d982ea01526?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    filter: blur(50px);
-    opacity: 0.7;
-  }
 }
 
 .profile_avatar {
@@ -48,6 +32,7 @@
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--bg-color);
+  background-color: var(--bg2-color);
 }
 
 .profile_name {
@@ -61,6 +46,7 @@
 
 .profile_cover {
   position: absolute;
+  background-color: var(--bg2-color);
   top: 0;
   left: 0;
   width: 100%;
@@ -121,4 +107,3 @@
   font-size: small;
   cursor: pointer;
 }
-

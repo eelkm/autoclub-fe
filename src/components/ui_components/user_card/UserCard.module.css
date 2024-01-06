@@ -3,10 +3,6 @@
   align-items: center;
   cursor: pointer;
   padding: 5px 0;
-
-  @media screen and (max-width: 1000px) {
-    padding-left: 7px;
-  }
 }
 
 .user:hover {
@@ -21,10 +17,8 @@
   width: 45px;
   height: 45px;
   margin-right: 15px;
-
-  @media screen and (max-width: 1000px) {
-    margin-right: 0;
-  }
+  object-fit: cover;
+  object-position: center;
 }
 
 .contacts_username {
@@ -33,10 +27,6 @@
   flex: 1;
   align-items: flex-start;
   font-family: var(--body-font);
-
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
 }
 
 .role_name {
@@ -50,10 +40,4 @@
   font-weight: 900;
   text-align: center;
   display: inline-block;
-}
-
-.club_name {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }

@@ -77,7 +77,7 @@ const RightSide = ({ userData }) => {
   return (
     <div className={styles.right_side}>
       <div className={styles.account}>
-        <button className={styles.account_button}>
+        {/* <button className={styles.account_button}>
           <svg
             stroke="currentColor"
             strokeWidth={2}
@@ -103,7 +103,7 @@ const RightSide = ({ userData }) => {
           >
             <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
           </svg>
-        </button>
+        </button> */}
         <span
           className={styles.account_user}
           onClick={handleMouseClick}
@@ -114,7 +114,7 @@ const RightSide = ({ userData }) => {
               Logout
             </div>
           ) : (
-            currentUser
+            <div className={styles.username}>{currentUser}</div>
           )}
 
           <img src={currentUserImg} alt="" className={styles.account_profile} />

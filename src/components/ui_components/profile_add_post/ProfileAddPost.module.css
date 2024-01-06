@@ -4,14 +4,13 @@
   margin-bottom: 20px;
 }
 
-
 .status_menu {
   padding: 20px;
   display: flex;
   align-items: center;
 }
 
-.status_menu_item{
+.status_menu_item {
   text-decoration: none;
   color: var(--side-title);
   padding: 10px 14px;
@@ -35,7 +34,6 @@
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 20px;
   flex-wrap: wrap;
-  
 }
 
 .status_img {
@@ -44,6 +42,7 @@
   object-fit: cover;
   border-radius: 50%;
   margin-right: 20px;
+  background-color: var(--bg2-color);
 }
 
 .status_textarea {
@@ -86,9 +85,12 @@
 .status_action:hover {
   color: #fff;
   cursor: pointer;
+
   @media screen and (max-width: 1260px) {
+    width: 26px;
+    overflow: hidden;
     color: transparent;
-    cursor: pointer;
+    white-space: nowrap;
   }
 }
 
@@ -118,11 +120,11 @@
   margin-left: auto;
 }
 
-.video_window{
+.video_window {
   padding: 10px;
 }
 
-.video_input{
+.video_input {
   width: 100%;
   border: solid 1px var(--border-color);
   padding: 5px;

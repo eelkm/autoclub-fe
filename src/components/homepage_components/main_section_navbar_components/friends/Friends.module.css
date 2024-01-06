@@ -7,13 +7,22 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
 }
 
-.friend{
+.friend {
   flex: 1;
   border-radius: 50px;
   margin: 10px;
   min-width: 200px;
   border: 1px solid var(--bg-hover);
+}
+
+.no_friends {
+  width: 100%;
+  height: 40px;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

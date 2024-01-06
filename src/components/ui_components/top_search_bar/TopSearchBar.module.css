@@ -19,7 +19,7 @@
     font-family: var(--body-font);
     font-weight: 600;
     &::placeholder {
-    color: var(--side2-title);
+      color: var(--side2-title);
     }
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add this line for the shadow */
   }
@@ -38,21 +38,7 @@
   display: none;
   cursor: pointer;
 
-  &:before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    position: absolute;
-    background-color: #007bff;
-    border: 2px solid #1e2031;
-    top: 13px;
-    right: 12px;
-  }
-  svg {
-    width: 22px;
-  }
-  @media screen and (max-width: 1210px) {
+  @media screen and (max-width: 1280px) {
     display: block;
   }
 }

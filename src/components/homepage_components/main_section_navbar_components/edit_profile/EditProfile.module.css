@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.status_menu_item{
+.status_menu_item {
   text-decoration: none;
   color: var(--side-title);
   padding: 10px 14px;
@@ -35,7 +35,6 @@
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 20px;
   flex-wrap: wrap;
-  
 }
 
 .status_textarea {
@@ -46,7 +45,7 @@
   /* background-color: transparent; */
   background-color: var(--bg2-color);
   border: none;
-  resize: none;
+  resize: auto;
   color: #fff;
   max-width: calc(100% - 70px);
   &::placeholder {

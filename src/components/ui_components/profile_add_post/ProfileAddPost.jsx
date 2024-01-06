@@ -92,7 +92,7 @@ const ProfileAddPost = ({ userData }) => {
         </div>
       </div>
       <div className={styles.status_main}>
-        <img src={userData.p_image_link} className={styles.status_img} />
+        <img src={userData.p_image_link} className={styles.status_img} alt="" />
         <textarea
           className={styles.status_textarea}
           onChange={(e) => handleTextChange(e)}

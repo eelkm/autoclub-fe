@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
 import { BackendURL } from "../../../../utils/constants";
-import ClubCard from "../../../ui_components/club_card/ClubCard";
 import { useNavigate } from "react-router-dom";
 import { NavConstants } from "../../../../utils/constants";
+import UserCard from "../../../ui_components/user_card/UserCard";
 
 const Friends = ({ userData }) => {
   const { token, setProfileNav } = useGlobalContext();
@@ -53,7 +53,7 @@ const Friends = ({ userData }) => {
             className={styles.friend}
             onClick={() => handleClick(friend.username)}
           >
-            <ClubCard clubname={friend.username} image={friend.p_image_link} />
+            <UserCard clubname={friend.username} image={friend.p_image_link} />
           </div>
         );
       })}

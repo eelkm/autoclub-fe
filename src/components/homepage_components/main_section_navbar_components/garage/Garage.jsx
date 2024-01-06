@@ -37,7 +37,7 @@ const Garage = ({ userData }) => {
       {currentUser === userData.username && (
         <div
           onClick={() => setIsAddCarOpen(!isAddCarOpen)}
-          className={styles.no_cars}
+          className={styles.add_car}
         >
           Add a car to your garage.
         </div>

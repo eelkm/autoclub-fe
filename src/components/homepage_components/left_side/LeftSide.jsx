@@ -1,71 +1,66 @@
-
-import { Link } from 'react-router-dom';
-import styles from './LeftSide.module.css';
-import { useGlobalContext } from '../../../contexts/GlobalContext';
-import { NavConstants } from '../../../utils/constants';
+import { Link } from "react-router-dom";
+import styles from "./LeftSide.module.css";
+import { useGlobalContext } from "../../../contexts/GlobalContext";
+import { NavConstants } from "../../../utils/constants";
+import { FiHome } from "react-icons/fi";
+import { ImCompass2 } from "react-icons/im";
+import { FaRegImage, FaRegPlusSquare } from "react-icons/fa";
+import { MdEvent } from "react-icons/md";
 
 const LeftSide = () => {
-  const { currentUser, setProfileNav} = useGlobalContext();
+  const { currentUser, setProfileNav } = useGlobalContext();
 
   return (
-  <div className={styles.left_side}>
-    <div className={styles.left_side_button}></div>
-    <div className={styles.logo}>AutoClub</div>
-    <div className={styles.side_wrapper}>
-      <div className={styles.side_title}>MENU</div>
-      <div className={styles.side_menu}>
-        <Link to={`/profile/${currentUser}`} onClick={()=>setProfileNav(NavConstants.Profile)}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-            <path d="M9 22V12h6v10" />
-          </svg>
-          Home
-        </Link>
-        <a href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="M21 15l-5-5L5 21" />
-          </svg>
-          Explore
-        </a>
-        <a href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="M21 15l-5-5L5 21" />
-          </svg>
-          Gallery
-        </a>
-        <a href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-            <path d="M16 2v4M8 2v4M3 10h18" />
-          </svg>
-          Events
-        </a>
-        <a href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-            <path d="M16 2v4M8 2v4M3 10h18" />
-          </svg>
-          Create club
-        </a>
+    <div className={styles.left_side}>
+      <div className={styles.logo}>AutoClub</div>
+      <div className={styles.image_container}>
+        <img
+          className={styles.logo_image}
+          src="/src/assets/Logo 500.png"
+          alt=""
+        />
       </div>
-    </div>
-    <div className={styles.side_wrapper}>
-      <div className={styles.side_title}>MENU</div>
-      <div className={styles.side_menu}>
-        <a href="#">ITEM</a>
-        <a href="#">ITEM</a>
-        <a href="#">ITEM</a>
-        <a href="#">ITEM</a>
-        <a href="#">ITEM</a>
-        <a href="#">ITEM</a>
+      <div className={styles.side_wrapper}>
+        <div className={styles.side_title}>MENU</div>
+        <div className={styles.side_menu}>
+          <Link
+            to={`/profile/${currentUser}`}
+            onClick={() => setProfileNav(NavConstants.Profile)}
+          >
+            <FiHome />
+            <span>Home</span>
+          </Link>
+          <a href="#">
+            <ImCompass2 />
+            <span>Explore</span>
+          </a>
+          <a href="#">
+            <FaRegImage />
+            <span>Gallery</span>
+          </a>
+          <a href="#">
+            <MdEvent />
+            <span>Events</span>
+          </a>
+          <a href="#">
+            <FaRegPlusSquare />
+            <span>Create club</span>
+          </a>
+        </div>
       </div>
+      {/* <div className={styles.side_wrapper}>
+        <div className={styles.side_title}>MENU</div>
+        <div className={styles.side_menu}>
+          <a href="#">ITEM</a>
+          <a href="#">ITEM</a>
+          <a href="#">ITEM</a>
+          <a href="#">ITEM</a>
+          <a href="#">ITEM</a>
+          <a href="#">ITEM</a>
+        </div>
+      </div> */}
     </div>
-  </div>
   );
-}
+};
 
 export default LeftSide;
