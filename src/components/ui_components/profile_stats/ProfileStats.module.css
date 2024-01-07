@@ -3,6 +3,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 1450px) {
+    height: 100%;
+  }
 }
 
 .box {

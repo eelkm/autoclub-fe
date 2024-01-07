@@ -24,6 +24,10 @@
   z-index: 1;
   bottom: 16px;
   left: 24px;
+
+  @media screen and (max-width: 700px) {
+    bottom: 50px;
+  }
 }
 
 .profile_img {
@@ -33,15 +37,42 @@
   object-fit: cover;
   border: 3px solid var(--bg-color);
   background-color: var(--bg2-color);
+
+  @media screen and (max-width: 1280px) {
+    width: 125px;
+    height: 125px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .profile_name {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
   margin-left: 24px;
   margin-bottom: 24px;
   font-size: 22px;
   color: #fff;
   font-weight: 600;
   font-family: var(--title-font);
+
+  @media screen and (max-width: 1000px) {
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 700px) {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
 }
 
 .profile_cover {
@@ -64,6 +95,23 @@
   width: 100%;
   display: flex;
   border-radius: 0 0 4px 4px;
+  font-size: 16px;
+
+  @media screen and (max-width: 1280px) {
+    padding-left: 150px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    font-size: 14px;
+    padding-left: 120px;
+  }
+
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+    font-weight: 800;
+    padding-left: 0px;
+    justify-content: center;
+  }
 }
 
 .profile_menu_link {
@@ -85,7 +133,6 @@
 .follow_btn {
   background-color: #1b86f9;
   box-shadow: 0 0 10px #1b86f9;
-  margin-left: 20px;
   border-radius: 4px;
   padding: 7px 20px;
   font-size: small;
@@ -101,9 +148,19 @@
 .following_btn {
   background-color: var(--bg-color);
   box-shadow: 0 0 10px var(--bg-color);
-  margin-left: 20px;
   border-radius: 4px;
   padding: 7px 20px;
   font-size: small;
   cursor: pointer;
+}
+
+.follow_btn,
+.following_btn {
+  @media screen and (max-width: 700px) {
+  }
+}
+
+.username {
+  margin-right: 20px;
+  margin-bottom: 5px;
 }

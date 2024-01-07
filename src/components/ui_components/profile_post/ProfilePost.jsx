@@ -1,6 +1,5 @@
 import styles from "./ProfilePost.module.css";
 import axios from "axios";
-import YouTube from "react-youtube";
 import { useState, useEffect } from "react";
 import { FaHeart, FaTrash } from "react-icons/fa6";
 import { HiDotsHorizontal } from "react-icons/hi";
@@ -152,10 +151,15 @@ const ProfilePost = ({ username, p_image, post }) => {
       <div className={styles.post_content}>
         {post.text}
         {isYouTubeLink(post.post_media_url) ? (
-          <YouTube
-            videoId={extractVideoId(post.post_media_url)}
-            className={styles.post_photo}
-          />
+          <div className={styles.resizable_video}>
+            <iframe
+              src={`https://www.youtube.com/embed/${extractVideoId(
+                post.post_media_url
+              )}`}
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
         ) : (
           <Link to={`/profile/${username}/post/${post.id_profile_post}`}>
             <img

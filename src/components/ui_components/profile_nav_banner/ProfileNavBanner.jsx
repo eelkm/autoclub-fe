@@ -106,23 +106,28 @@ const ProfileNavBanner = ({ userData }) => {
           className={styles.profile_img}
         />
         <div className={styles.profile_name}>
-          {userData.username}
-          {currentUser !== userData.username && (
-            <>
-              {isFollowing ? (
-                <span
-                  className={styles.following_btn}
-                  onClick={handleUnfollowClick}
-                >
-                  Following
-                </span>
-              ) : (
-                <span className={styles.follow_btn} onClick={handleFollowClick}>
-                  Follow
-                </span>
-              )}
-            </>
-          )}
+          <div className={styles.username}>{userData.username}</div>
+          <div>
+            {currentUser !== userData.username && (
+              <>
+                {isFollowing ? (
+                  <span
+                    className={styles.following_btn}
+                    onClick={handleUnfollowClick}
+                  >
+                    Following
+                  </span>
+                ) : (
+                  <span
+                    className={styles.follow_btn}
+                    onClick={handleFollowClick}
+                  >
+                    Follow
+                  </span>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
       {userData.p_banner_link !== null && (

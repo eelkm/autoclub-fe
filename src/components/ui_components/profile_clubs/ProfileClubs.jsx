@@ -26,7 +26,6 @@ const ProfileClubs = ({ userData }) => {
         } else {
           console.error("Error:", data.error);
         }
-        console.log("Member clubs:", data);
       })
       .catch((error) => {
         console.error("Failed to fetch member clubs:", error);
@@ -38,12 +37,13 @@ const ProfileClubs = ({ userData }) => {
       <div className={styles.intro_title}>Member of</div>
 
       {memberOfClubs.map((item, index) => (
-        <ClubCard
-          key={index}
-          clubname={item.name}
-          image={item.small_img_url}
-          role_name={item.role_name}
-        />
+        <div key={index} className={styles.user}>
+          <img src={item.small_img_url} className={styles.user_img} />
+          <div className={styles.contacts_username}>
+            <div className={styles.club_name}>{item.name}</div>
+            <div className={styles.role_name}>{item.role_name}</div>
+          </div>
+        </div>
       ))}
     </div>
   );

@@ -9,7 +9,7 @@
   height: 320px;
 }
 
-.inside_box{
+.inside_box {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,7 +19,7 @@
   position: relative;
 }
 
-.editbtn{
+.editbtn {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -34,11 +34,11 @@
   align-items: center;
 }
 
-.editbtn:hover{
+.editbtn:hover {
   background-color: var(--bg-hover);
 }
 
-.edit_window{
+.edit_window {
   position: absolute;
   top: 0;
   left: 0;
@@ -50,7 +50,8 @@
   overflow-y: auto;
 }
 
-.car_cover, .car_cover_underlay {
+.car_cover,
+.car_cover_underlay {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -73,7 +74,7 @@
   opacity: 1; /* When the 'show' class is added, the element becomes fully opaque */
 }
 
-.gradient_box{
+.gradient_box {
   position: absolute;
   z-index: 3;
   top: 0;
@@ -81,10 +82,10 @@
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  background: linear-gradient(90deg, #000 12.5%, rgba(24, 24, 24, 0.00) 100%);
+  background: linear-gradient(90deg, #000 12.5%, rgba(24, 24, 24, 0) 100%);
 }
 
-.text_box{
+.text_box {
   position: absolute;
   z-index: 4;
   top: 0;
@@ -95,7 +96,7 @@
   padding: 20px;
 }
 
-.car_year{
+.car_year {
   color: var(--side-title);
   text-shadow: 3px 8px 7.2px rgba(0, 0, 0, 0.25);
   font-family: DM Sans;
@@ -104,9 +105,13 @@
   font-weight: 700;
   line-height: normal;
   margin-bottom: -15px;
+
+  @media screen and (max-width: 1280px) {
+    font-size: 18px;
+  }
 }
 
-.car_name{
+.car_name {
   color: var(--side-title);
   text-shadow: 3px 8px 7.2px rgba(0, 0, 0, 0.25);
   font-family: DM Sans;
@@ -116,19 +121,35 @@
   line-height: normal;
   margin-top: 0;
   margin-bottom: 0;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+
+  @media screen and (max-width: 1280px) {
+    font-size: 48px;
+  }
 }
 
-.car_description{
+.car_description {
   width: 60%;
   height: auto;
   margin-top: 0;
 
-  color: #FFF;
+  color: #fff;
   font-family: DM Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .car_action {
@@ -156,9 +177,7 @@
   flex-wrap: wrap;
 }
 
-
-
-.delete_icon_box{
+.delete_icon_box {
   height: 100%;
   width: 100%;
   display: flex;
@@ -167,8 +186,6 @@
   border-radius: 8px;
   border: solid 2px red;
 }
-
-
 
 .post .status_main {
   border: none;

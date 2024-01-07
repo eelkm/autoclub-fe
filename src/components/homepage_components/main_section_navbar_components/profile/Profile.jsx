@@ -40,7 +40,6 @@ const Profile = ({ userData }) => {
         } else {
           console.error("Error:", data.error);
         }
-        // console.log('DATA:', data);
       })
       .catch((error) => {
         console.error("Failed to fetch user posts:", error);
@@ -50,9 +49,16 @@ const Profile = ({ userData }) => {
   return (
     <div className={styles.timeline}>
       <div className={styles.timeline_left}>
-        <ProfileStats userData={userData} />
-        <ProfileAbout userData={userData} />
-        {currentUser === userData.username && <ProfileEvent />}
+        <div className={styles.stats}>
+          <div className={styles.p_stats}>
+            <ProfileStats userData={userData} />
+          </div>
+          <div className={styles.p_about}>
+            <ProfileAbout userData={userData} />
+          </div>
+          {/* {currentUser === userData.username && <ProfileEvent />} */}
+        </div>
+
         {currentUser !== userData.username && (
           <ProfileClubs userData={userData} />
         )}
