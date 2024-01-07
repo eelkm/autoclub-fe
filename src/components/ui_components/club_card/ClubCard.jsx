@@ -1,8 +1,16 @@
 import styles from "./ClubCard.module.css";
+import { useMediaQuery } from "react-responsive";
 
 const ClubCard = ({ clubname, image, role_name }) => {
-  const truncatedClubName =
-    clubname.length > 10 ? `${clubname.slice(0, 10)}..` : clubname;
+  const isMD = useMediaQuery({ query: "(max-width: 1280px)" });
+
+  const truncatedClubName = isMD
+    ? clubname.length > 10
+      ? `${clubname.slice(0, 10)}..`
+      : clubname
+    : clubname.length > 20
+    ? `${clubname.slice(0, 20)}..`
+    : clubname;
 
   return (
     <div className={styles.user}>

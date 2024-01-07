@@ -8,11 +8,15 @@ import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
 import { BackendURL } from "../utils/constants";
 import CarSection from "./homepage_components/car_section/CarSection";
 import PostSection from "./homepage_components/post_section/PostSection";
+import MediaQuery from "react-responsive";
+import MobileLeftSide from "./homepage_components/left_side/MobileLeftSide";
+import MobileRightSide from "./homepage_components/right_side/MobileRightSide";
 
 function Homepage({ token }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { setCurrentUser, setCurrentUserImg } = useGlobalContext();
+  const { setCurrentUser, setCurrentUserImg, openMobileRight } =
+    useGlobalContext();
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -65,26 +69,37 @@ function Homepage({ token }) {
   return (
     <div>
       {userData && (
-        <div className="container">
-          <LeftSide />
+        <>
+          <div className="container">
+            <MediaQuery minWidth={701}>
+              <LeftSide />
+            </MediaQuery>
 
-          <Routes>
-            <Route
-              path="/profile/:username"
-              element={<MainSection userData={userData} />}
-            />
-            <Route
-              path="/profile/:username/car/:carId"
-              element={<CarSection userData={userData} />}
-            />
-            <Route
-              path="/profile/:username/post/:postId"
-              element={<PostSection userData={userData} />}
-            />
-          </Routes>
+            <Routes>
+              <Route
+                path="/profile/:username"
+                element={<MainSection userData={userData} />}
+              />
+              <Route
+                path="/profile/:username/car/:carId"
+                element={<CarSection userData={userData} />}
+              />
+              <Route
+                path="/profile/:username/post/:postId"
+                element={<PostSection userData={userData} />}
+              />
+            </Routes>
 
-          <RightSide userData={userData} />
-        </div>
+            <MediaQuery minWidth={701}>
+              <RightSide userData={userData} />
+            </MediaQuery>
+          </div>
+
+          <MediaQuery maxWidth={700}>
+            {openMobileRight && <MobileRightSide />}
+            <MobileLeftSide />
+          </MediaQuery>
+        </>
       )}
     </div>
   );

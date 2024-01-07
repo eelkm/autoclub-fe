@@ -1,0 +1,44 @@
+.account_user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: var(--side-title);
+  font-weight: 600;
+  padding: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-left: 10px;
+  span {
+    font-size: 10px;
+    font-weight: normal;
+  }
+}
+
+.account_user:hover {
+  color: #e0e0e0;
+  background: var(--bg-hover);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.logout {
+  color: red;
+}
+
+.username {
+  font-size: 15px;
+  font-family: var(--title-font);
+
+  @media screen and (max-width: 1280px) {
+    display: none;
+  }
+}
+
+.account_profile {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin: 0 10px;
+}

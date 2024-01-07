@@ -1,0 +1,10 @@
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 94vh;
+  background-color: var(--bg-color);
+  border-left: 1px solid var(--bg2-color);
+  z-index: 3;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}

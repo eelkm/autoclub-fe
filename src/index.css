@@ -10,8 +10,6 @@
   --side-title: #cecece;
   --side2-title: #a0a0a0;
   --button: #a6a6a6;
-  --lg: 1280px;
-  --md: 1000px;
 }
 
 * {
@@ -33,6 +31,10 @@ body {
   height: 100vh;
   overflow: hidden;
   margin: 0 auto;
+
+  @media screen and (max-width: 700px) {
+    height: 94vh;
+  }
 }
 
 /* ===== Scrollbar CSS ===== */
