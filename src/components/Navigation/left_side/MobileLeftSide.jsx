@@ -27,21 +27,21 @@ const MobileLeftSide = () => {
           <FiHome />
         </Link>
 
-        <a href="#">
+        <Link to={`/featured`}>
           <ImCompass2 />
-        </a>
+        </Link>
 
-        <a href="#">
+        <Link to={`/gallery`}>
           <FaRegImage />
-        </a>
+        </Link>
 
-        <a href="#">
+        <Link to={`/events`}>
           <MdEvent />
-        </a>
+        </Link>
 
-        <a href="#">
+        <Link to={`/new`}>
           <FaRegPlusSquare />
-        </a>
+        </Link>
 
         <a>
           {openMobileRight ? (

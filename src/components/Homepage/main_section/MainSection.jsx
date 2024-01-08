@@ -3,10 +3,10 @@ import ProfileNavBanner from "../../ui_components/profile_nav_banner/ProfileNavB
 import TopSearchBar from "../../ui_components/top_search_bar/TopSearchBar";
 import styles from "./MainSection.module.css";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
-import Profile from "../main_section_navbar_components/profile/Profile";
-import Garage from "../main_section_navbar_components/garage/Garage";
-import Friends from "../main_section_navbar_components/friends/Friends";
-import EditProfile from "../main_section_navbar_components/edit_profile/EditProfile";
+import Profile from "./profile/Profile";
+import Garage from "./garage/Garage";
+import Friends from "./friends/Friends";
+import EditProfile from "./edit_profile/EditProfile";
 
 const MainSection = ({ userData }) => {
   const { profileNav } = useGlobalContext();

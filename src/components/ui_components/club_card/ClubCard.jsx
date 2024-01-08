@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./ClubCard.module.css";
 import { useMediaQuery } from "react-responsive";
 
@@ -13,13 +14,15 @@ const ClubCard = ({ clubname, image, role_name }) => {
     : clubname;
 
   return (
-    <div className={styles.user}>
-      <img src={image} className={styles.user_img} />
-      <div className={styles.contacts_username}>
-        <div className={styles.club_name}>{truncatedClubName}</div>
-        <div className={styles.role_name}>{role_name}</div>
+    <Link className={styles.link} to={`/club/clubname`}>
+      <div className={styles.user}>
+        <img src={image} className={styles.user_img} />
+        <div className={styles.contacts_username}>
+          <div className={styles.club_name}>{truncatedClubName}</div>
+          <div className={styles.role_name}>{role_name}</div>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

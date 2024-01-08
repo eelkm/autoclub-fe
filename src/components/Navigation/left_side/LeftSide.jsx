@@ -30,22 +30,26 @@ const LeftSide = () => {
             <FiHome />
             <span>Home</span>
           </Link>
-          <a href="#">
+
+          <Link to={`/featured`}>
             <ImCompass2 />
             <span>Explore</span>
-          </a>
-          <a href="#">
+          </Link>
+
+          <Link to={`/gallery`}>
             <FaRegImage />
             <span>Gallery</span>
-          </a>
-          <a href="#">
+          </Link>
+
+          <Link to={`/events`}>
             <MdEvent />
             <span>Events</span>
-          </a>
-          <a href="#">
+          </Link>
+
+          <Link to={`/new`}>
             <FaRegPlusSquare />
             <span>Create club</span>
-          </a>
+          </Link>
         </div>
       </div>
       {/* <div className={styles.side_wrapper}>

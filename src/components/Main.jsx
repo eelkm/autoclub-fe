@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LeftSide from "./homepage_components/left_side/LeftSide";
-import RightSide from "./homepage_components/right_side/RightSide";
-import MainSection from "./homepage_components/main_section/MainSection";
+import LeftSide from "./Navigation/left_side/LeftSide";
+import RightSide from "./Navigation/right_side/RightSide";
+import MainSection from "./Homepage/main_section/MainSection";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
 import { BackendURL } from "../utils/constants";
-import CarSection from "./homepage_components/car_section/CarSection";
-import PostSection from "./homepage_components/post_section/PostSection";
+import CarSection from "./Homepage/car_section/CarSection";
+import PostSection from "./Homepage/post_section/PostSection";
 import MediaQuery from "react-responsive";
-import MobileLeftSide from "./homepage_components/left_side/MobileLeftSide";
-import MobileRightSide from "./homepage_components/right_side/MobileRightSide";
+import MobileLeftSide from "./Navigation/left_side/MobileLeftSide";
+import MobileRightSide from "./Navigation/right_side/MobileRightSide";
+import ErrorPage from "./Navigation/error_page/ErrorPage";
 
 function Homepage({ token }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { setCurrentUser, setCurrentUserImg, openMobileRight } =
+  const { currentUser, setCurrentUser, setCurrentUserImg, openMobileRight } =
     useGlobalContext();
   const [userData, setUserData] = useState(null);
 
@@ -48,7 +49,7 @@ function Homepage({ token }) {
         const pathParts = location.pathname.split("/profile/");
         const usernameToSearch = pathParts[1]
           ? pathParts[1].split("/")[0]
-          : null;
+          : currentUser;
 
         const response = await axios.get(
           `${BackendURL}/users/get_user?username=${usernameToSearch}`,
@@ -76,6 +77,8 @@ function Homepage({ token }) {
             </MediaQuery>
 
             <Routes>
+              <Route path="*" element={<ErrorPage />} />
+
               <Route
                 path="/profile/:username"
                 element={<MainSection userData={userData} />}

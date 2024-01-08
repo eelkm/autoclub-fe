@@ -4,6 +4,7 @@ import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import ClubCard from "../club_card/ClubCard";
 import { BackendURL } from "../../../utils/constants";
+import { Link } from "react-router-dom";
 
 const ProfileClubs = ({ userData }) => {
   const { token } = useGlobalContext();
@@ -37,13 +38,15 @@ const ProfileClubs = ({ userData }) => {
       <div className={styles.intro_title}>Member of</div>
 
       {memberOfClubs.map((item, index) => (
-        <div key={index} className={styles.user}>
-          <img src={item.small_img_url} className={styles.user_img} />
-          <div className={styles.contacts_username}>
-            <div className={styles.club_name}>{item.name}</div>
-            <div className={styles.role_name}>{item.role_name}</div>
+        <Link className={styles.link} to={`/club/clubname`}>
+          <div key={index} className={styles.user}>
+            <img src={item.small_img_url} className={styles.user_img} />
+            <div className={styles.contacts_username}>
+              <div className={styles.club_name}>{item.name}</div>
+              <div className={styles.role_name}>{item.role_name}</div>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

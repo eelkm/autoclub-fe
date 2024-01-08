@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import RegisterComponent from "./components/auth/RegisterComponent";
-import LoginComponent from "./components/auth/LoginComponent";
-import Homepage from "./components/Homepage";
+import RegisterComponent from "./components/Auth/RegisterComponent";
+import LoginComponent from "./components/Auth/LoginComponent";
+import Homepage from "./components/Main";
 import { useGlobalContext } from "./contexts/GlobalContext";
 
 function App() {

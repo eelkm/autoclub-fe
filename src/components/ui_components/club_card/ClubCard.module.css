@@ -57,3 +57,8 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}

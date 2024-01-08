@@ -71,3 +71,8 @@
   text-align: center;
   display: inline-block;
 }
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
