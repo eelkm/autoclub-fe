@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import axios from "axios";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import { uploadFileToS3 } from "../../../utils/ImageUpload";
 
 const EditCar = ({ car }) => {
@@ -219,7 +219,7 @@ const EditCar = ({ car }) => {
     }
 
     setIsLoading(false);
-    //window.location.reload(); // Reload page after adding car
+    window.location.reload(); // Reload page after adding car
   };
 
   return (

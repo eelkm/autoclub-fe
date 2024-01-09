@@ -1,7 +1,7 @@
 import ProfileAbout from "../../../ui_components/profile_about/ProfileAbout";
 import ProfileAddPost from "../../../ui_components/profile_add_post/ProfileAddPost";
 import ProfileClubs from "../../../ui_components/profile_clubs/ProfileClubs";
-import ProfileEvent from "../../../ui_components/profile_event/ProfileEvent";
+import ProfileEvents from "../../../ui_components/profile_event/ProfileEvents";
 import ProfilePost from "../../../ui_components/profile_post/ProfilePost";
 import styles from "./Profile.module.css";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
@@ -56,7 +56,10 @@ const Profile = ({ userData }) => {
           <div className={styles.p_about}>
             <ProfileAbout userData={userData} />
           </div>
-          {/* {currentUser === userData.username && <ProfileEvent />} */}
+
+          <div className={styles.p_events}>
+            <ProfileEvents />
+          </div>
         </div>
 
         {currentUser !== userData.username && (

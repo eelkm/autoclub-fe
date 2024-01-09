@@ -38,8 +38,8 @@ const ProfileClubs = ({ userData }) => {
       <div className={styles.intro_title}>Member of</div>
 
       {memberOfClubs.map((item, index) => (
-        <Link className={styles.link} to={`/club/clubname`}>
-          <div key={index} className={styles.user}>
+        <Link key={index} className={styles.link} to={`/club/clubname`}>
+          <div className={styles.user}>
             <img src={item.small_img_url} className={styles.user_img} />
             <div className={styles.contacts_username}>
               <div className={styles.club_name}>{item.name}</div>

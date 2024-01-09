@@ -3,14 +3,14 @@ import axios from "axios";
 import styles from "./CarSection.module.css";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { useEffect, useState } from "react";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import { useLocation } from "react-router-dom";
 import TopSearchBar from "../../ui_components/top_search_bar/TopSearchBar";
 import Comments from "../../ui_components/comments/Comments";
 import { LuHeart } from "react-icons/lu";
 import { FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { NavConstants } from "../../../utils/constants";
+import { NavConstants } from "../../../utils/Constants";
 
 const CarSection = ({ userData }) => {
   const { token, setProfileNav } = useGlobalContext();

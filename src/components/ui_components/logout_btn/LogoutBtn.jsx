@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./LogoutBtn.module.css";
-import { NavConstants } from "../../../utils/constants";
+import { NavConstants } from "../../../utils/Constants";
 
 const LogoutBtn = () => {
   const Navigate = useNavigate();

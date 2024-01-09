@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./LeftSide.module.css";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
-import { NavConstants } from "../../../utils/constants";
+import { NavConstants } from "../../../utils/Constants";
 import { FiHome } from "react-icons/fi";
 import { ImCompass2 } from "react-icons/im";
 import { FaRegImage, FaRegPlusSquare } from "react-icons/fa";

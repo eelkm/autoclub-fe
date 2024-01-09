@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
-import { BackendURL } from "../../../../utils/constants";
+import { BackendURL } from "../../../../utils/Constants";
 import styles from "../Comments.module.css";
 import axios from "axios";
 

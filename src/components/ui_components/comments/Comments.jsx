@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Comments.module.css";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import AddComment from "./comment_components/AddComment";
 import Comment from "./comment_components/Comment";
 

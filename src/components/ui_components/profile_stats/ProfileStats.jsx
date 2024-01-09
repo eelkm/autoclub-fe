@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./ProfileStats.module.css";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 
 const ProfileStats = ({ userData }) => {
   const { token } = useGlobalContext();

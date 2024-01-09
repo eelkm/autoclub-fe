@@ -1,6 +1,5 @@
 .search_bar {
   display: flex;
-
   min-height: 40px;
   background-color: var(--bg-color);
   z-index: 3;
@@ -37,4 +36,19 @@
   @media screen and (min-width: 1001px) {
     display: none;
   }
+}
+
+.results {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  width: 100%;
+  background-color: var(--bg2-color);
+  padding: 10px;
+  box-shadow: 0 0 20px var(--bg2-color);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--side-title);
 }

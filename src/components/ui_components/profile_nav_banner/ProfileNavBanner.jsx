@@ -2,7 +2,7 @@ import styles from "./ProfileNavBanner.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
-import { BackendURL, NavConstants } from "../../../utils/constants";
+import { BackendURL, NavConstants } from "../../../utils/Constants";
 
 const ProfileNavBanner = ({ userData }) => {
   const { profileNav, setProfileNav } = useGlobalContext();

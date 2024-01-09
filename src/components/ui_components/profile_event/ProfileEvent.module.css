@@ -14,7 +14,7 @@
 }
 
 .event_img {
-  max-width: 100%;
+  max-width: 240px;
   display: block;
   padding-bottom: 12px;
 }
@@ -61,4 +61,9 @@
   font-size: 13px;
   font-weight: 500;
   padding: 0 14px;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
 }

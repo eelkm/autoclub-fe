@@ -3,7 +3,7 @@ import TopSearchBar from "../../ui_components/top_search_bar/TopSearchBar";
 import styles from "./PostSection.module.css";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import ProfilePost from "../../ui_components/profile_post/ProfilePost";
 import Comments from "../../ui_components/comments/Comments";
 

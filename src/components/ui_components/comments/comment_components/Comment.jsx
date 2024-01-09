@@ -7,7 +7,7 @@ import moment from "moment-timezone";
 import { useNavigate } from "react-router-dom";
 import { FaHeart } from "react-icons/fa6";
 import { LuHeart } from "react-icons/lu";
-import { BackendURL } from "../../../../utils/constants";
+import { BackendURL } from "../../../../utils/Constants";
 
 const Comment = ({ comment, car_id, profile_post_id, club_post_id }) => {
   const { token } = useGlobalContext();
