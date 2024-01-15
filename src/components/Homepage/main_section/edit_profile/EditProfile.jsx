@@ -5,9 +5,10 @@ import axios from "axios";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
 import { BackendURL } from "../../../../utils/constants";
 import { uploadFileToS3 } from "../../../../utils/ImageUpload";
+import { NavConstants } from "../../../../utils/constants";
 
 const EditProfile = ({ userData }) => {
-  const { token } = useGlobalContext();
+  const { token, setUpdateProfile, setProfileNav } = useGlobalContext();
   const [descAbout, setDescAbout] = useState(userData.desc_about);
   const [fileName, setFileName] = useState("");
   const [fileName2, setFileName2] = useState("");
@@ -15,6 +16,8 @@ const EditProfile = ({ userData }) => {
   const fileInputRef2 = useRef(null); // Reference to the hidden file input element
   const [s3profileUrl, setS3ProfileUrl] = useState("");
   const [s3coverUrl, setS3CoverUrl] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+  const [isUploading2, setIsUploading2] = useState(false);
 
   // =======================
   // Update description
@@ -62,6 +65,7 @@ const EditProfile = ({ userData }) => {
   };
 
   const handleFileChangePP = (e) => {
+    setIsUploading(true);
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       console.log("Selected file:", selectedFile.name);
@@ -70,6 +74,7 @@ const EditProfile = ({ userData }) => {
       uploadFileToS3(selectedFile, token).then((imageUrl) => {
         if (imageUrl) {
           setS3ProfileUrl(imageUrl);
+          setIsUploading(false);
         }
       });
     }
@@ -112,6 +117,7 @@ const EditProfile = ({ userData }) => {
   };
 
   const handleFileChangeCP = (e) => {
+    setIsUploading2(true);
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       console.log("Selected file:", selectedFile.name);
@@ -120,6 +126,7 @@ const EditProfile = ({ userData }) => {
       uploadFileToS3(selectedFile, token).then((imageUrl) => {
         if (imageUrl) {
           setS3CoverUrl(imageUrl);
+          setIsUploading2(false);
         }
       });
     }
@@ -163,7 +170,8 @@ const EditProfile = ({ userData }) => {
     if (fileName2) {
       postCoverPicture();
     }
-    window.location.reload();
+    setUpdateProfile(Math.random());
+    setProfileNav(NavConstants.Profile);
   };
 
   return (
@@ -223,9 +231,13 @@ const EditProfile = ({ userData }) => {
         </div>
       </div>
       <div className={styles.status_main}>
-        <button className={styles.status_save} onClick={handleSave}>
-          Save
-        </button>
+        {(isUploading == true) | (isUploading2 == true) ? (
+          <button className={styles.status_loading}>Loading...</button>
+        ) : (
+          <button className={styles.status_save} onClick={handleSave}>
+            Save
+          </button>
+        )}
       </div>
     </div>
   );

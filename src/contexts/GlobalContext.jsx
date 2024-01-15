@@ -9,6 +9,9 @@ export const GlobalProvider = ({ children }) => {
   const [currentUserImg, setCurrentUserImg] = useState("");
   const [profileNav, setProfileNav] = useState(NavConstants.Profile);
   const [updateComments, setUpdateComments] = useState();
+  const [updateGarage, setUpdateGarage] = useState();
+  const [updateProfile, setUpdateProfile] = useState();
+  const [updatePosts, setUpdatePosts] = useState();
   const [openMobileRight, setOpenMobileRight] = useState(false);
 
   return (
@@ -26,6 +29,12 @@ export const GlobalProvider = ({ children }) => {
         setUpdateComments,
         openMobileRight,
         setOpenMobileRight,
+        updateGarage,
+        setUpdateGarage,
+        updateProfile,
+        setUpdateProfile,
+        updatePosts,
+        setUpdatePosts,
       }}
     >
       {children}

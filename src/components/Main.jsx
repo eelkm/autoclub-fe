@@ -16,8 +16,13 @@ import ErrorPage from "./Navigation/error_page/ErrorPage";
 function Homepage({ token }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { currentUser, setCurrentUser, setCurrentUserImg, openMobileRight } =
-    useGlobalContext();
+  const {
+    currentUser,
+    setCurrentUser,
+    setCurrentUserImg,
+    openMobileRight,
+    updateProfile,
+  } = useGlobalContext();
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -65,7 +70,7 @@ function Homepage({ token }) {
 
     fetchUsername();
     fetchUserData();
-  }, [token, location.pathname]); // Fetch user data when token or location.pathname changes
+  }, [token, location.pathname, updateProfile]); // Fetch user data when token or location.pathname changes
 
   return (
     <div>

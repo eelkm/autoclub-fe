@@ -7,8 +7,7 @@ import { useGlobalContext } from "../../../../contexts/GlobalContext";
 import AddCar from "../../../ui_components/garage_add_car/AddCar";
 
 const Garage = ({ userData }) => {
-  const { token } = useGlobalContext();
-  const { currentUser } = useGlobalContext();
+  const { token, currentUser, updateGarage } = useGlobalContext();
   const [isAddCarOpen, setIsAddCarOpen] = useState(false);
   const [cars, setCars] = useState([]);
 
@@ -30,7 +29,7 @@ const Garage = ({ userData }) => {
       .catch((error) => {
         console.error("Failed to fetch user cars:", error);
       });
-  }, [userData, token]);
+  }, [userData, token, updateGarage]);
 
   return (
     <div>

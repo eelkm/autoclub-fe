@@ -3,15 +3,15 @@ import { FaTrash } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import axios from "axios";
-import { BackendURL } from "../../../utils/Constants";
+import { BackendURL } from "../../../utils/constants";
 import { uploadFileToS3 } from "../../../utils/ImageUpload";
 
-const EditCar = ({ car }) => {
+const EditCar = ({ car, overlay }) => {
   const fileInputRef = useRef(null); // Reference to the hidden file input element
   const [selectedFiles, setSelectedFiles] = useState([]); // Array of selected files
   const [currentImages, setCurrentImages] = useState([]); // Array of current images
   const [currentImagesToDelete, setCurrentImagesToDelete] = useState([]); // Array of current images to delete
-  const { token } = useGlobalContext();
+  const { token, setUpdateGarage } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(false); // Loading state for the submit button
   const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -219,7 +219,8 @@ const EditCar = ({ car }) => {
     }
 
     setIsLoading(false);
-    window.location.reload(); // Reload page after adding car
+    setUpdateGarage(Math.random());
+    overlay(false);
   };
 
   return (

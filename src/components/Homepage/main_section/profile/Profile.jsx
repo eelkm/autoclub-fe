@@ -9,10 +9,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BackendURL } from "../../../../utils/constants";
 import ProfileStats from "../../../ui_components/profile_stats/ProfileStats";
+import MediaQuery from "react-responsive";
 
 const Profile = ({ userData }) => {
-  const { currentUser } = useGlobalContext();
-  const { token } = useGlobalContext();
+  const { token, currentUser, updatePosts } = useGlobalContext();
 
   const [posts, setPosts] = useState([]);
   const [startPost, setStartPost] = useState(0);
@@ -44,7 +44,7 @@ const Profile = ({ userData }) => {
       .catch((error) => {
         console.error("Failed to fetch user posts:", error);
       });
-  }, [userData, startPost, endPost, token]);
+  }, [userData, startPost, endPost, token, updatePosts]);
 
   return (
     <div className={styles.timeline}>
@@ -56,10 +56,11 @@ const Profile = ({ userData }) => {
           <div className={styles.p_about}>
             <ProfileAbout userData={userData} />
           </div>
-
-          <div className={styles.p_events}>
-            <ProfileEvents />
-          </div>
+          <MediaQuery minWidth={1451}>
+            <div className={styles.p_events}>
+              <ProfileEvents />
+            </div>
+          </MediaQuery>
         </div>
 
         {currentUser !== userData.username && (

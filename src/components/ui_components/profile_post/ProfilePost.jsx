@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { FaHeart, FaTrash } from "react-icons/fa6";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
-import { BackendURL } from "../../../utils/Constants";
+import { BackendURL } from "../../../utils/constants";
 import { LuHeart } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
 import { BiComment } from "react-icons/bi";

@@ -68,7 +68,7 @@ const CarCard = ({ username, car }) => {
 
       {isEditOverlayOpen && (
         <div className={styles.edit_window}>
-          <EditCar car={car} />
+          <EditCar car={car} overlay={setIsEditOverlayOpen} />
         </div>
       )}
     </div>

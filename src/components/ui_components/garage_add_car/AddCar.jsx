@@ -3,13 +3,13 @@ import { FaTrash } from "react-icons/fa";
 import { useRef, useState } from "react";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import axios from "axios";
-import { BackendURL } from "../../../utils/Constants";
+import { BackendURL } from "../../../utils/constants";
 import { uploadFileToS3 } from "../../../utils/ImageUpload";
 
 const AddCar = () => {
   const fileInputRef = useRef(null); // Reference to the hidden file input element
   const [selectedFiles, setSelectedFiles] = useState([]); // Array of selected files
-  const { token } = useGlobalContext();
+  const { token, setUpdateGarage } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(false); // Loading state for the submit button
 
   const carBrandRef = useRef(null);
@@ -115,7 +115,14 @@ const AddCar = () => {
       await postImage(addedCarId, selectedFiles[i]);
     }
     setIsLoading(false);
-    window.location.reload(); // Reload page after adding car
+    // Re-render the garage component
+    setUpdateGarage(Math.random());
+
+    // Reset the form
+    setSelectedFiles([]);
+    carBrandRef.current.value = "";
+    carYearRef.current.value = "";
+    carDescriptionRef.current.value = "";
   };
 
   return (

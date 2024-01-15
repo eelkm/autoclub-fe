@@ -30,13 +30,18 @@ function App() {
             justifyContent: "center",
             alignItems: "center",
             height: "100vh",
+            border: "5px solid rgba(100,63,131,0.2) ",
           }}
         >
-          {showLogin ? (
-            <LoginComponent setToken={setToken} setShowLogin={setShowLogin} />
-          ) : (
-            <RegisterComponent setShowLogin={setShowLogin} />
-          )}
+          <div
+            style={{ boxShadow: "0px 0px 1000px 46px rgba(100,63,131,0.7)" }}
+          >
+            {showLogin ? (
+              <LoginComponent setToken={setToken} setShowLogin={setShowLogin} />
+            ) : (
+              <RegisterComponent setShowLogin={setShowLogin} />
+            )}
+          </div>
         </div>
       )}
     </div>

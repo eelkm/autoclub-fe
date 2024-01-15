@@ -2,7 +2,8 @@
   height: 6vh;
   background-color: var(--bg2-color);
   z-index: 3;
-  position: relative;
+  position: fixed;
+  width: 100%;
 }
 
 .side_menu {

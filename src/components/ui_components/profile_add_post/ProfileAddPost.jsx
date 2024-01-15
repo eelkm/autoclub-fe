@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./ProfileAddPost.module.css";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
-import { BackendURL } from "../../../utils/Constants";
+import { BackendURL } from "../../../utils/constants";
 import { uploadFileToS3 } from "../../../utils/ImageUpload";
 
 const ProfileAddPost = ({ userData }) => {
-  const { token } = useGlobalContext();
+  const { token, setUpdatePosts } = useGlobalContext();
   const fileInputRef = useRef(null); // Reference to the hidden file input element
   const [addVideoWindow, setAddVideoWindow] = useState(false);
 
@@ -75,7 +75,13 @@ const ProfileAddPost = ({ userData }) => {
 
       if (response.status === 200) {
         console.log("Post added successfully:", response.data);
-        window.location.reload(); // Reload page after adding post
+        setUpdatePosts(Math.random());
+        // Reset all states
+        setFileName("");
+        setS3ImageUrl("");
+        setYoutubeUrl("");
+        setText("");
+        setAddVideoWindow(false);
       } else {
         console.error("Failed to add post. Status:", response.status);
       }
@@ -97,7 +103,7 @@ const ProfileAddPost = ({ userData }) => {
           className={styles.status_textarea}
           onChange={(e) => handleTextChange(e)}
           placeholder="Write something.."
-          defaultValue={""}
+          value={text}
         />
       </div>
 
@@ -108,6 +114,7 @@ const ProfileAddPost = ({ userData }) => {
             className={styles.video_input}
             onChange={(e) => setYoutubeUrl(e.target.value)}
             placeholder="Paste Youtube link"
+            value={youtubeUrl}
           />
         </div>
       )}
