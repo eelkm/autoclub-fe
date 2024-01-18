@@ -6,6 +6,7 @@ import { FiHome } from "react-icons/fi";
 import { ImCompass2 } from "react-icons/im";
 import { FaRegImage, FaRegPlusSquare } from "react-icons/fa";
 import { MdEvent } from "react-icons/md";
+import UserCard from "../../ui_components/user_card/UserCard";
 
 const LeftSide = () => {
   const { currentUser, setProfileNav } = useGlobalContext();
@@ -52,17 +53,22 @@ const LeftSide = () => {
           </Link>
         </div>
       </div>
-      {/* <div className={styles.side_wrapper}>
-        <div className={styles.side_title}>MENU</div>
+      <div className={styles.side_wrapper_recomended}>
+        <div className={styles.side_title}>Recomended</div>
         <div className={styles.side_menu}>
-          <a href="#">ITEM</a>
-          <a href="#">ITEM</a>
-          <a href="#">ITEM</a>
-          <a href="#">ITEM</a>
-          <a href="#">ITEM</a>
-          <a href="#">ITEM</a>
+          <Link
+            to={`/profile/edgars.apinis`}
+            onClick={() => setProfileNav(NavConstants.Profile)}
+          >
+            <UserCard
+              username={"edgars.apinis"}
+              image={
+                "https://autoclubbucket.s3.eu-north-1.amazonaws.com/a4aa1c17e7fa5823f1ef649caa9c8a1b"
+              }
+            />
+          </Link>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import LogoutBtn from "../logout_btn/LogoutBtn";
 import styles from "./TopSearchBar.module.css";
 import { useState } from "react";
 import axios from "axios";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import UserCard from "../user_card/UserCard";
 import { Link } from "react-router-dom";

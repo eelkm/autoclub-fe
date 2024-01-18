@@ -2,7 +2,7 @@ import styles from "./Garage.module.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import CarCard from "../../../ui_components/garage_car_card/CarCard";
-import { BackendURL } from "../../../../utils/constants";
+import { BackendURL } from "../../../../utils/Constants";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
 import AddCar from "../../../ui_components/garage_add_car/AddCar";
 

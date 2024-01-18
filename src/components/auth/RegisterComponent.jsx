@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { BackendURL } from "../../utils/constants";
+import { BackendURL } from "../../utils/Constants";
 import styles from "./Auth.module.css";
 
 const RegisterComponent = ({ setShowLogin }) => {
@@ -34,6 +34,7 @@ const RegisterComponent = ({ setShowLogin }) => {
       console.log(response);
       console.log("Registration successful");
       if (response.status === 200) {
+        localStorage.setItem("username", username);
         setShowLogin(true);
       }
     } catch (error) {

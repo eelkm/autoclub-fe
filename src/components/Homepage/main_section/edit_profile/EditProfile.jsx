@@ -3,9 +3,9 @@ import styles from "./EditProfile.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
-import { BackendURL } from "../../../../utils/constants";
+import { BackendURL } from "../../../../utils/Constants";
 import { uploadFileToS3 } from "../../../../utils/ImageUpload";
-import { NavConstants } from "../../../../utils/constants";
+import { NavConstants } from "../../../../utils/Constants";
 
 const EditProfile = ({ userData }) => {
   const { token, setUpdateProfile, setProfileNav } = useGlobalContext();

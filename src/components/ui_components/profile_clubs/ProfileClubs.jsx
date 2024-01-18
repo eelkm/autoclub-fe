@@ -3,7 +3,7 @@ import styles from "./ProfileClubs.module.css";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import ClubCard from "../club_card/ClubCard";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import { Link } from "react-router-dom";
 
 const ProfileClubs = ({ userData }) => {

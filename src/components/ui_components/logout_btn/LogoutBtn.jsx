@@ -3,6 +3,7 @@ import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./LogoutBtn.module.css";
 import { NavConstants } from "../../../utils/Constants";
+import DefaultPicture from "../default_picture/DefaultPicture";
 
 const LogoutBtn = () => {
   const Navigate = useNavigate();
@@ -24,6 +25,7 @@ const LogoutBtn = () => {
     setToken("");
     setProfileNav(NavConstants.Profile);
     localStorage.removeItem("token");
+    localStorage.removeItem("username");
     Navigate(`/`);
   };
 
@@ -41,7 +43,14 @@ const LogoutBtn = () => {
         <div className={styles.username}>{currentUser}</div>
       )}
 
-      <img src={currentUserImg} alt="" className={styles.account_profile} />
+      {currentUserImg === null ? (
+        <div className={styles.account_profile}>
+          <DefaultPicture username={currentUser} />
+        </div>
+      ) : (
+        <img src={currentUserImg} alt="" className={styles.account_profile} />
+      )}
+
       <span>▶</span>
     </span>
   );

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { NavConstants } from "../utils/constants";
+import { NavConstants } from "../utils/Constants";
 
 const GlobalContext = createContext();
 

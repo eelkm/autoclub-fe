@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./ProfileAddPost.module.css";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import { uploadFileToS3 } from "../../../utils/ImageUpload";
+import DefaultPicture from "../default_picture/DefaultPicture";
 
 const ProfileAddPost = ({ userData }) => {
   const { token, setUpdatePosts } = useGlobalContext();
@@ -16,7 +17,6 @@ const ProfileAddPost = ({ userData }) => {
   const [s3imageUrl, setS3ImageUrl] = useState("");
 
   const [text, setText] = useState("");
-  // const [finalUrl, setFinalUrl] = useState(''); // Final URL to be saved to the database (either S3 image URL or Youtube video URL)
 
   const handleButtonClick = () => {
     if (fileInputRef.current) {
@@ -98,7 +98,18 @@ const ProfileAddPost = ({ userData }) => {
         </div>
       </div>
       <div className={styles.status_main}>
-        <img src={userData.p_image_link} className={styles.status_img} alt="" />
+        {userData.p_image_link === null ? (
+          <div className={styles.status_img}>
+            <DefaultPicture username={userData.username} />
+          </div>
+        ) : (
+          <img
+            src={userData.p_image_link}
+            className={styles.status_img}
+            alt=""
+          />
+        )}
+
         <textarea
           className={styles.status_textarea}
           onChange={(e) => handleTextChange(e)}

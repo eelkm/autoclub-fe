@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "./CarSection.module.css";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { useEffect, useState } from "react";
-import { BackendURL } from "../../../utils/Constants";
+import { BackendURL } from "../../../utils/Constants.js";
 import { useLocation } from "react-router-dom";
 import TopSearchBar from "../../ui_components/top_search_bar/TopSearchBar";
 import Comments from "../../ui_components/comments/Comments";

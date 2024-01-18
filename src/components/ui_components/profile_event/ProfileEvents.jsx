@@ -1,7 +1,7 @@
 import styles from "./ProfileEvent.module.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { Link } from "react-router-dom";
 import moment from "moment-timezone";

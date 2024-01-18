@@ -7,7 +7,7 @@ import styles from "./Profile.module.css";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { BackendURL } from "../../../../utils/constants";
+import { BackendURL } from "../../../../utils/Constants";
 import ProfileStats from "../../../ui_components/profile_stats/ProfileStats";
 import MediaQuery from "react-responsive";
 

@@ -5,7 +5,7 @@ import RightSide from "./Navigation/right_side/RightSide";
 import MainSection from "./Homepage/main_section/MainSection";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
-import { BackendURL } from "../utils/constants";
+import { BackendURL } from "../utils/Constants";
 import CarSection from "./Homepage/car_section/CarSection";
 import PostSection from "./Homepage/post_section/PostSection";
 import MediaQuery from "react-responsive";

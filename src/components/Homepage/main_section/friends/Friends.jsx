@@ -2,9 +2,9 @@ import styles from "./Friends.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../../contexts/GlobalContext";
-import { BackendURL } from "../../../../utils/constants";
+import { BackendURL } from "../../../../utils/Constants";
 import { useNavigate } from "react-router-dom";
-import { NavConstants } from "../../../../utils/constants";
+import { NavConstants } from "../../../../utils/Constants";
 import UserCard from "../../../ui_components/user_card/UserCard";
 
 const Friends = ({ userData }) => {
@@ -92,7 +92,7 @@ const Friends = ({ userData }) => {
         })}
 
         {followers.length == 0 && (
-          <div className={styles.no_friends}>Not following anyone</div>
+          <div className={styles.no_friends}>No followers</div>
         )}
       </div>
     </div>

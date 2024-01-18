@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import { useRef, useState } from "react";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import axios from "axios";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import { uploadFileToS3 } from "../../../utils/ImageUpload";
 
 const AddCar = () => {

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { FaHeart } from "react-icons/fa6";
 import { LuHeart } from "react-icons/lu";
 import { BackendURL } from "../../../../utils/Constants";
+import DefaultPicture from "../../default_picture/DefaultPicture";
 
 const Comment = ({ comment, car_id, profile_post_id, club_post_id }) => {
   const { token } = useGlobalContext();
@@ -70,13 +71,24 @@ const Comment = ({ comment, car_id, profile_post_id, club_post_id }) => {
 
   return (
     <div className={styles.comment}>
-      <img
-        className={styles.p_img}
-        src={comment.p_image_link}
-        alt="profile picture"
-        onClick={handleUserClick}
-        style={{ cursor: "pointer" }}
-      />
+      {comment.p_image_link == null ? (
+        <div
+          onClick={handleUserClick}
+          style={{ cursor: "pointer" }}
+          className={styles.p_img}
+        >
+          <DefaultPicture username={comment.username} />
+        </div>
+      ) : (
+        <img
+          className={styles.p_img}
+          src={comment.p_image_link}
+          alt="profile picture"
+          onClick={handleUserClick}
+          style={{ cursor: "pointer" }}
+        />
+      )}
+
       <div className={styles.comment_text}>
         <div className={styles.comment_username} onClick={handleUserClick}>
           {comment.username}

@@ -3,6 +3,7 @@ import { useGlobalContext } from "../../../../contexts/GlobalContext";
 import { BackendURL } from "../../../../utils/Constants";
 import styles from "../Comments.module.css";
 import axios from "axios";
+import DefaultPicture from "../../default_picture/DefaultPicture";
 
 const AddComment = ({
   parrent_comment_id,
@@ -51,11 +52,17 @@ const AddComment = ({
 
   return (
     <div className={styles.status_menu}>
-      <img
-        className={styles.p_img}
-        src={currentUserImg}
-        alt="profile picture"
-      />
+      {currentUserImg === null ? (
+        <div className={styles.p_img}>
+          <DefaultPicture username={currentUser} />
+        </div>
+      ) : (
+        <img
+          className={styles.p_img}
+          src={currentUserImg}
+          alt="profile picture"
+        />
+      )}
 
       <textarea
         className={styles.status_textarea}

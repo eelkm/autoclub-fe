@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import axios from "axios";
-import { BackendURL } from "../../../utils/constants";
+import { BackendURL } from "../../../utils/Constants";
 import { uploadFileToS3 } from "../../../utils/ImageUpload";
 
 const EditCar = ({ car, overlay }) => {
@@ -246,6 +246,7 @@ const EditCar = ({ car, overlay }) => {
           className={styles.status_textarea}
           defaultValue={car.year}
           placeholder="For example - 1998"
+          maxLength={4}
         />
       </div>
 

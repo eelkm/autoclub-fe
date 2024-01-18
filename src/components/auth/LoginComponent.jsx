@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../contexts/GlobalContext";
-import { BackendURL } from "../../utils/constants";
+import { BackendURL } from "../../utils/Constants";
 import styles from "./Auth.module.css";
 
 const LoginComponent = ({ setToken, setShowLogin }) => {
   const navigate = useNavigate(); // Used to redirect the user
   const { setCurrentUser } = useGlobalContext(); // Used to set the username in state
 
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(localStorage.getItem("username"));
   const [password, setPassword] = useState("");
 
   const [isWrongCredentials, setIsWrongCredentials] = useState(false);
@@ -70,7 +70,7 @@ const LoginComponent = ({ setToken, setShowLogin }) => {
             name="username"
             id="username"
             autoComplete="off"
-            value={username}
+            value={username ? username : ""}
             onChange={(e) => {
               setUsername(e.target.value);
               setIsWrongCredentials(false);

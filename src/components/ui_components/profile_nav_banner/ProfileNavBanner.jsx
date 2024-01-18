@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { BackendURL, NavConstants } from "../../../utils/Constants";
+import Avatar from "boring-avatars";
+import DefaultPicture from "../default_picture/DefaultPicture";
 
 const ProfileNavBanner = ({ userData }) => {
   const { profileNav, setProfileNav } = useGlobalContext();
@@ -100,11 +102,18 @@ const ProfileNavBanner = ({ userData }) => {
   return (
     <div className={styles.profile}>
       <div className={styles.profile_avatar}>
-        <img
-          src={userData.p_image_link}
-          alt="-"
-          className={styles.profile_img}
-        />
+        {userData.p_image_link === null ? (
+          <div className={styles.profile_img}>
+            <DefaultPicture username={userData.username} />
+          </div>
+        ) : (
+          <img
+            src={userData.p_image_link}
+            alt="-"
+            className={styles.profile_img}
+          />
+        )}
+
         <div className={styles.profile_name}>
           <div className={styles.username}>{userData.username}</div>
           <div>
