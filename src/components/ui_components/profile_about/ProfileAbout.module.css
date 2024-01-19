@@ -6,6 +6,7 @@
   background-color: var(--bg-color);
   border-radius: 4px;
   width: 260px;
+  min-height: 100px;
 
   @media screen and (max-width: 1450px) {
     width: 100%;

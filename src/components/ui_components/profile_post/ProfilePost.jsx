@@ -8,6 +8,7 @@ import { BackendURL } from "../../../utils/Constants";
 import { LuHeart } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
 import { BiComment } from "react-icons/bi";
+import DefaultPicture from "../default_picture/DefaultPicture";
 
 const isYouTubeLink = (url) => {
   // console.log(url);
@@ -109,12 +110,23 @@ const ProfilePost = ({ username, p_image, post }) => {
   return (
     <div className={`${styles.post} ${styles.box}`}>
       <div className={styles.status_main}>
-        <img
-          onClick={handleUserClick}
-          src={p_image}
-          className={styles.status_img}
-          style={{ cursor: "pointer" }}
-        />
+        {p_image == null ? (
+          <div
+            onClick={handleUserClick}
+            style={{ cursor: "pointer" }}
+            className={styles.status_img}
+          >
+            <DefaultPicture username={username} />
+          </div>
+        ) : (
+          <img
+            onClick={handleUserClick}
+            src={p_image}
+            className={styles.status_img}
+            style={{ cursor: "pointer" }}
+          />
+        )}
+
         <div className={styles.post_detail}>
           <strong onClick={handleUserClick} style={{ cursor: "pointer" }}>
             {username}

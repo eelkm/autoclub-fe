@@ -5,6 +5,7 @@
   transition: 0.3s;
   background-color: var(--bg-color);
   overflow: auto;
+  overflow-x: hidden;
   flex-shrink: 0;
 
   @media screen and (max-width: 1280px) {

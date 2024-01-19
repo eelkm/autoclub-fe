@@ -13,5 +13,8 @@
 
   @media screen and (max-width: 700px) {
     padding: 5px;
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
   }
 }

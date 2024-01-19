@@ -12,7 +12,15 @@ const Comments = ({ car_id, profile_post_id, club_post_id }) => {
   const [sortingCriteria, setSortingCriteria] = useState("mostLiked"); // Default to most liked
 
   useEffect(() => {
-    GetComments();
+    // Without this check, the comments would be fetched twice and would cause a bug
+    if (
+      car_id === undefined &&
+      profile_post_id === undefined &&
+      club_post_id === undefined
+    ) {
+    } else {
+      GetComments();
+    }
   }, [car_id, profile_post_id, club_post_id, updateComments, sortingCriteria]);
 
   // Gets the comments from the database
@@ -69,8 +77,6 @@ const Comments = ({ car_id, profile_post_id, club_post_id }) => {
       } else if (criteria === "mostLiked") {
         // Sort by likes_count in descending order
         return b.likes_count - a.likes_count;
-      } else {
-        return 0; // Default to no sorting
       }
     });
   };
